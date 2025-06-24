@@ -1,4 +1,6 @@
-﻿using InventoryControl.Application.UseCases.User.Profile;
+﻿using InventoryControl.API.Attributes;
+using InventoryControl.Application.UseCases.User.ChangePassword;
+using InventoryControl.Application.UseCases.User.Profile;
 using InventoryControl.Application.UseCases.User.Register;
 using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
@@ -23,12 +25,25 @@ namespace InventoryControl.API.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(ResponseUserProfileJson), StatusCodes.Status200OK)]
+        [AuthenticatedUser]
         public async Task<IActionResult> GetUserProfile(
             [FromServices] IGetUserProfileUseCase useCase)
         {
             var result = await useCase.Execute();
 
             return Ok(result);
+        }
+
+        [HttpPut("change-password")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [AuthenticatedUser]
+        public async Task<IActionResult> ChangePassword(
+            [FromServices] IChangePasswordUseCase useCase,
+            [FromBody] RequestChangePasswordJson request)
+        {
+            await useCase.Execute(request);
+
+            return NoContent();
         }
     }
 }

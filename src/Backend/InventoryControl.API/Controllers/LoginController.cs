@@ -1,12 +1,14 @@
-﻿using InventoryControl.Communication.Responses;
+﻿using InventoryControl.Application.UseCases.Login.DoLogin;
+using InventoryControl.Communication.Requests;
+using InventoryControl.Communication.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryControl.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
-    public class LoginController
+    public class LoginController : ControllerBase
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status200OK)]
