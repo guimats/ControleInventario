@@ -4,13 +4,16 @@ namespace InventoryControl.API.Token
 {
     public class HttpContextTokenValue : ITokenProvider
     {
-        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly IHttpContextAccessor _contextAcessor;
 
-        public HttpContextTokenValue(IHttpContextAccessor contextAccessor) => _contextAccessor = contextAccessor;
+        public HttpContextTokenValue(IHttpContextAccessor contextAcessor)
+        {
+            _contextAcessor = contextAcessor;
+        }
 
         public string Value()
         {
-            var authentication = _contextAccessor.HttpContext!.Request.Headers.Authorization.ToString();
+            var authentication = _contextAcessor.HttpContext!.Request.Headers.Authorization.ToString();
 
             return authentication["Bearer ".Length..].Trim();
         }
