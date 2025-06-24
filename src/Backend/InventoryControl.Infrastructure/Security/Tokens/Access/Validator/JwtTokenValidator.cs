@@ -28,7 +28,7 @@ namespace InventoryControl.Infrastructure.Security.Tokens.Access.Validator
             // valida o token, retornando a lista de claims
             var principal = tokenHandler.ValidateToken(token, validationParameter, out _);
 
-            // pega o claim de userIdentifier que criamps
+            // pega o claim de userIdentifier que criamos
             var userIdentifier = principal.Claims.First(c => c.Type == ClaimTypes.Sid).Value;
 
             // retorna o userIdentifier em formato Guid
