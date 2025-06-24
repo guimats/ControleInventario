@@ -61,6 +61,15 @@ namespace InventoryControl.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Department not suported..
+        /// </summary>
+        public static string DEPARTMENT_NOT_SUPORTED {
+            get {
+                return ResourceManager.GetString("DEPARTMENT_NOT_SUPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail already registered..
         /// </summary>
         public static string EMAIL_ALREADY_REGISTERED {
@@ -70,11 +79,38 @@ namespace InventoryControl.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-mail or password invalid..
+        /// </summary>
+        public static string EMAIL_OR_PASSWORD_INVALID {
+            get {
+                return ResourceManager.GetString("EMAIL_OR_PASSWORD_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail can&apos;t be empty..
         /// </summary>
         public static string EMPTY_EMAIL {
             get {
                 return ResourceManager.GetString("EMPTY_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internal code can&apos;t be empty..
+        /// </summary>
+        public static string EMPTY_INTERNAL_CODE {
+            get {
+                return ResourceManager.GetString("EMPTY_INTERNAL_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item status can&apos;t be empty..
+        /// </summary>
+        public static string EMPTY_ITEM_STATUS {
+            get {
+                return ResourceManager.GetString("EMPTY_ITEM_STATUS", resourceCulture);
             }
         }
         
@@ -97,6 +133,15 @@ namespace InventoryControl.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product type can&apos;t be empty..
+        /// </summary>
+        public static string EMPTY_PRODUCT_TYPE {
+            get {
+                return ResourceManager.GetString("EMPTY_PRODUCT_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail must be valid..
         /// </summary>
         public static string INVALID_EMAIL {
@@ -111,6 +156,60 @@ namespace InventoryControl.Exceptions {
         public static string INVALID_PASSWORD {
             get {
                 return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status not supported..
+        /// </summary>
+        public static string ITEM_STATUS_NOT_SUPORTED {
+            get {
+                return ResourceManager.GetString("ITEM_STATUS_NOT_SUPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication token is missing..
+        /// </summary>
+        public static string NO_TOKEN {
+            get {
+                return ResourceManager.GetString("NO_TOKEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password different from the current password..
+        /// </summary>
+        public static string PASSWORD_DIFFERENT_CURRENT_PASSWORD {
+            get {
+                return ResourceManager.GetString("PASSWORD_DIFFERENT_CURRENT_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product type not supported..
+        /// </summary>
+        public static string PRODUCT_TYPE_NOT_SUPORTED {
+            get {
+                return ResourceManager.GetString("PRODUCT_TYPE_NOT_SUPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown error..
+        /// </summary>
+        public static string UNKNOWN_ERROR {
+            get {
+                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User without permission to access this resource..
+        /// </summary>
+        public static string USER_WITHOUT_PERMISSION_ACCESS_RESOURCE {
+            get {
+                return ResourceManager.GetString("USER_WITHOUT_PERMISSION_ACCESS_RESOURCE", resourceCulture);
             }
         }
     }

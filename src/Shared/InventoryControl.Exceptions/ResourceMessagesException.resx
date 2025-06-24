@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DEPARTMENT_NOT_SUPORTED" xml:space="preserve">
+    <value>Department not suported.</value>
+  </data>
   <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
     <value>E-mail already registered.</value>
   </data>
+  <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
+    <value>E-mail or password invalid.</value>
+  </data>
   <data name="EMPTY_EMAIL" xml:space="preserve">
     <value>E-mail can't be empty.</value>
+  </data>
+  <data name="EMPTY_INTERNAL_CODE" xml:space="preserve">
+    <value>Internal code can't be empty.</value>
   </data>
   <data name="EMPTY_NAME" xml:space="preserve">
     <value>Name can't be empty.</value>
@@ -129,10 +138,34 @@
   <data name="EMPTY_PASSWORD" xml:space="preserve">
     <value>Password can't be empty.</value>
   </data>
+  <data name="EMPTY_PRODUCT_TYPE" xml:space="preserve">
+    <value>Product type can't be empty.</value>
+  </data>
+  <data name="EMPTY_ITEM_STATUS" xml:space="preserve">
+    <value>Item status can't be empty.</value>
+  </data>
   <data name="INVALID_EMAIL" xml:space="preserve">
     <value>E-mail must be valid.</value>
   </data>
   <data name="INVALID_PASSWORD" xml:space="preserve">
     <value>Password must be longer than 6 characters.</value>
+  </data>
+  <data name="NO_TOKEN" xml:space="preserve">
+    <value>Authentication token is missing.</value>
+  </data>
+  <data name="PRODUCT_TYPE_NOT_SUPORTED" xml:space="preserve">
+    <value>Product type not supported.</value>
+  </data>
+  <data name="ITEM_STATUS_NOT_SUPORTED" xml:space="preserve">
+    <value>Status not supported.</value>
+  </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Unknown error.</value>
+  </data>
+  <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
+    <value>User without permission to access this resource.</value>
+  </data>
+  <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
+    <value>Password different from the current password.</value>
   </data>
 </root>
