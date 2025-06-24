@@ -13,7 +13,10 @@ namespace InventoryControl.Infrastructure.Services.LoggedUser
         private readonly InventoryControlDbContext _dbContext;
         private readonly ITokenProvider _tokenProvider;
 
-        public LoggedUser(InventoryControlDbContext dbContext) => _dbContext = dbContext;
+        public LoggedUser(InventoryControlDbContext dbContext, ITokenProvider tokenProvider) {
+            _dbContext = dbContext;
+            _tokenProvider = tokenProvider;
+        } 
 
         public async Task<User> User()
         {
