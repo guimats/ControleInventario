@@ -8,6 +8,7 @@ namespace InventoryControl.Infrastructure.DataAccess
         public InventoryControlDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Item> Itens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

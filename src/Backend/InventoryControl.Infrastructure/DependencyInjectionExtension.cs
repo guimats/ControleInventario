@@ -1,5 +1,6 @@
 ﻿using FluentMigrator.Runner;
 using InventoryControl.Domain.Repositories;
+using InventoryControl.Domain.Repositories.Item;
 using InventoryControl.Domain.Repositories.User;
 using InventoryControl.Domain.Security.Cryptography;
 using InventoryControl.Domain.Security.Tokens;
@@ -53,6 +54,8 @@ namespace InventoryControl.Infrastructure
 
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
+            services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
+            services.AddScoped<IItemWriteOnlyRepository, ItemRepository>();
         }
 
         private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)
