@@ -11,13 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Shared\InventoryControl.Communication\InventoryControl.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\InventoryControl.Exceptions\InventoryControl.Exceptions.csproj" />
     <ProjectReference Include="..\InventoryControl.Application\InventoryControl.Application.csproj" />
+    <ProjectReference Include="..\InventoryControl.Infrastructure\InventoryControl.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
