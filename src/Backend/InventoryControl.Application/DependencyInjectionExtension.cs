@@ -1,4 +1,7 @@
 ﻿using InventoryControl.Application.Services;
+using InventoryControl.Application.UseCases.Item.Register;
+using InventoryControl.Application.UseCases.Login.DoLogin;
+using InventoryControl.Application.UseCases.User.ChangePassword;
 using InventoryControl.Application.UseCases.User.Profile;
 using InventoryControl.Application.UseCases.User.Register;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +29,9 @@ namespace InventoryControl.Application
         {
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
             services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
+            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
+            services.AddScoped<IRegisterItemUseCase, RegisterItemUseCase>();
+            services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
         }
     }
 }
