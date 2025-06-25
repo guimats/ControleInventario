@@ -2,9 +2,13 @@
 {
     public enum ProductType
     {
-        Periferico = 0,
-        Notebook = 1,
-        Utensilio = 2,
-        Movel = 3
+        Mouse = 0,
+        Teclado = 1,
+        Headset = 2,
+        Suporte = 3,
+        Notebook = 4,
+        Monitor = 5,
+        Movel = 6,
+        Outro = 7
     }
 }
