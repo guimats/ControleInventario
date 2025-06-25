@@ -4,12 +4,6 @@ using InventoryControl.Communication.Responses;
 using InventoryControl.Domain.Repositories;
 using InventoryControl.Domain.Repositories.Item;
 using InventoryControl.Domain.Services.LoggedUser;
-using InventoryControl.Exceptions.ExceptionsBase;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InventoryControl.Application.UseCases.Item.Register
 {
@@ -30,7 +24,7 @@ namespace InventoryControl.Application.UseCases.Item.Register
 
         public async Task<ResponseRegisteredItemJson> Execute(RequestRegisterItemJson request)
         {
-            Validate(request);
+            ItemValidatorBase.Validate(request);
 
             var loggedUser = await _loogedUser.User();
 
@@ -45,18 +39,6 @@ namespace InventoryControl.Application.UseCases.Item.Register
             {
                 Name = item.Name
             };
-        }
-
-        private static void Validate(RequestRegisterItemJson request)
-        {
-            var validator = new RegisterItemValidator();
-
-            var result = validator.Validate(request);
-
-            if (!result.IsValid)
-            {
-                throw new ErrorOnValidationException(result.Errors.Select(e => e.ErrorMessage).Distinct().ToList());
-            }
         }
     }
 }

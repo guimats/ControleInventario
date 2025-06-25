@@ -2,11 +2,11 @@
 using InventoryControl.Communication.Requests;
 using InventoryControl.Exceptions;
 
-namespace InventoryControl.Application.UseCases.Item.Register
+namespace InventoryControl.Application.UseCases.Item
 {
-    public class RegisterItemValidator : AbstractValidator<RequestRegisterItemJson>
+    public class ItemValidator : AbstractValidator<RequestRegisterItemJson>
     {
-        public RegisterItemValidator()
+        public ItemValidator()
         {
             RuleFor(item => item.Name).NotEmpty().WithMessage(ResourceMessagesException.EMPTY_NAME);
             RuleFor(item => item.InternalCode).NotEmpty().WithMessage(ResourceMessagesException.EMPTY_INTERNAL_CODE);

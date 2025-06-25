@@ -2,7 +2,7 @@
 using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
 
-namespace InventoryControl.Application.Services
+namespace InventoryControl.Application.Services.AutoMapper
 {
     public class AutoMapping : Profile
     {

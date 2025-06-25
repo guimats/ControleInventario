@@ -1,5 +1,6 @@
-﻿using InventoryControl.Application.Services;
+﻿using InventoryControl.Application.Services.AutoMapper;
 using InventoryControl.Application.UseCases.Item.Register;
+using InventoryControl.Application.UseCases.Item.Update;
 using InventoryControl.Application.UseCases.Login.DoLogin;
 using InventoryControl.Application.UseCases.User.ChangePassword;
 using InventoryControl.Application.UseCases.User.Profile;
@@ -31,6 +32,7 @@ namespace InventoryControl.Application
             services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
             services.AddScoped<IRegisterItemUseCase, RegisterItemUseCase>();
+            services.AddScoped<IUpdateItemUseCase, UpdateItemUseCase>();
             services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
         }
     }
