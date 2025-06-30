@@ -22,7 +22,7 @@ namespace InventoryControl.Application.UseCases.Item.Register
             _mapper = mapper;
         }
 
-        public async Task<ResponseRegisteredItemJson> Execute(RequestRegisterItemJson request)
+        public async Task<ResponseRegisteredItemJson> Execute(RequestItemJson request)
         {
             ItemValidatorBase.Validate(request);
 

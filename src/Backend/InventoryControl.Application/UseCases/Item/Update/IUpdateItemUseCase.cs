@@ -4,6 +4,6 @@ namespace InventoryControl.Application.UseCases.Item.Update
 {
     public interface IUpdateItemUseCase
     {
-        public Task Execute(long id, RequestRegisterItemJson request);
+        public Task Execute(long id, RequestItemJson request);
     }
 }

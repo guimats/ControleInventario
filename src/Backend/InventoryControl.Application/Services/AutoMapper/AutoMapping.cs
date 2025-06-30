@@ -16,7 +16,7 @@ namespace InventoryControl.Application.Services.AutoMapper
         {
             CreateMap<RequestRegisterUserJson, Domain.Entities.User>()
                 .ForMember(dest => dest.Password, opt => opt.Ignore());
-            CreateMap<RequestRegisterItemJson, Domain.Entities.Item>();
+            CreateMap<RequestItemJson, Domain.Entities.Item>();
         }
 
         public void DomainToResponse()

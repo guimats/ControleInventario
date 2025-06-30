@@ -4,7 +4,7 @@ using InventoryControl.Exceptions;
 
 namespace InventoryControl.Application.UseCases.Item
 {
-    public class ItemValidator : AbstractValidator<RequestRegisterItemJson>
+    public class ItemValidator : AbstractValidator<RequestItemJson>
     {
         public ItemValidator()
         {

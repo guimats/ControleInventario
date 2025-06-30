@@ -21,7 +21,7 @@ namespace InventoryControl.Application.UseCases.Item.Update
             _mapper = mapper;
         }
 
-        public async Task Execute(long id, RequestRegisterItemJson request)
+        public async Task Execute(long id, RequestItemJson request)
         {
             ItemValidatorBase.Validate(request);
 

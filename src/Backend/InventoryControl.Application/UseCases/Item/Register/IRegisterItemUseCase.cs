@@ -5,6 +5,6 @@ namespace InventoryControl.Application.UseCases.Item.Register
 {
     public interface IRegisterItemUseCase
     {
-        public Task<ResponseRegisteredItemJson> Execute(RequestRegisterItemJson request);
+        public Task<ResponseRegisteredItemJson> Execute(RequestItemJson request);
     }
 }

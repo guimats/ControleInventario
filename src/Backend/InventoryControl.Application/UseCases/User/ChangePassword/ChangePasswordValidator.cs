@@ -9,7 +9,10 @@ namespace InventoryControl.Application.UseCases.User.ChangePassword
         public ChangePasswordValidator()
         {
             RuleFor(user => user.NewPassword).NotEmpty().WithMessage(ResourceMessagesException.EMPTY_PASSWORD);
-            RuleFor(user => user.NewPassword.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceMessagesException.INVALID_PASSWORD);
+            When(user => !string.IsNullOrEmpty(user.NewPassword), () =>
+            {
+                RuleFor(user => user.NewPassword.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceMessagesException.INVALID_PASSWORD);
+            });
         }
     }
 }

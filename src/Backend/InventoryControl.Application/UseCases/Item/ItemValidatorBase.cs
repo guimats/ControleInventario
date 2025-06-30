@@ -5,7 +5,7 @@ namespace InventoryControl.Application.UseCases.Item
 {
     public static class ItemValidatorBase
     {
-        public static void Validate(RequestRegisterItemJson request)
+        public static void Validate(RequestItemJson request)
         {
             var validator = new ItemValidator();
 

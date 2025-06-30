@@ -29,9 +29,9 @@ namespace InventoryControl.Infrastructure
             AddLoggedUser(services);
             AddTokens(services, configuration);
 
-            // validando se está em ambiente de teste
-            //if (configuration.IsUnitTestEnviroment())
-            //    return;
+            //validando se está em ambiente de teste
+            if (configuration.IsUnitTestEnviroment())
+                return;
 
             AddDbContext(services, configuration);
             AddFluentMigrator(services, configuration);

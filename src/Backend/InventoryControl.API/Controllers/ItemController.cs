@@ -18,7 +18,7 @@ namespace InventoryControl.API.Controllers
         [AuthenticatedUser]
         public async Task<IActionResult> Register(
             [FromServices] IRegisterItemUseCase useCase,
-            [FromBody] RequestRegisterItemJson request)
+            [FromBody] RequestItemJson request)
         {
             var result = await useCase.Execute(request);
 
@@ -31,7 +31,7 @@ namespace InventoryControl.API.Controllers
         public async Task<IActionResult> UpdateItem(
             [FromRoute] long id,
             [FromServices] IUpdateItemUseCase useCase,
-            [FromBody] RequestRegisterItemJson request)
+            [FromBody] RequestItemJson request)
         {
             await useCase.Execute(id, request);
 
