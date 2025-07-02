@@ -2,6 +2,8 @@
 using InventoryControl.Communication.Requests;
 using InventoryControl.Domain.Repositories;
 using InventoryControl.Domain.Repositories.Item;
+using InventoryControl.Exceptions;
+using InventoryControl.Exceptions.ExceptionsBase;
 
 namespace InventoryControl.Application.UseCases.Item.Update
 {
@@ -26,6 +28,9 @@ namespace InventoryControl.Application.UseCases.Item.Update
             ItemValidatorBase.Validate(request);
 
             var item = await _repository.GetById(id);
+
+            if (item is null)
+                throw new NotFoundException(ResourceMessagesException.ITEM_NOT_FOUND);
 
             _mapper.Map(request, item);
 

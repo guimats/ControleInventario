@@ -160,6 +160,15 @@ namespace InventoryControl.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item not found..
+        /// </summary>
+        public static string ITEM_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ITEM_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status not supported..
         /// </summary>
         public static string ITEM_STATUS_NOT_SUPORTED {

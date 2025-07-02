@@ -1,3 +1,4 @@
+using InventoryControl.API.Filters;
 using InventoryControl.API.Token;
 using InventoryControl.Application;
 using InventoryControl.Domain.Security.Tokens;
@@ -47,6 +48,9 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+// Configurando Filtro que sera utilizado
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+
 // adicionando injecoes de dependencia
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -79,11 +83,16 @@ app.Run();
 
 void MigrateDatabase()
 {
-    //if (builder.Configuration.IsUnitTestEnviroment())
-    //    return;
+    if (builder.Configuration.IsUnitTestEnviroment())
+        return;
 
     var connectionString = builder.Configuration.ConnectionString();
     var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
     DatabaseMigration.Migrate(connectionString, serviceScope.ServiceProvider);
+}
+
+public partial class Program
+{
+    protected Program() { }
 }

@@ -1,9 +1,5 @@
 ﻿using AutoMapper;
 using InventoryControl.Communication.Responses;
-using InventoryControl.Domain.Repositories;
-using InventoryControl.Domain.Repositories.User;
-using InventoryControl.Domain.Security.Cryptography;
-using InventoryControl.Domain.Security.Tokens;
 using InventoryControl.Domain.Services.LoggedUser;
 
 namespace InventoryControl.Application.UseCases.User.Profile
