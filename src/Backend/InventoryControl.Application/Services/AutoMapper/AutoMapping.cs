@@ -22,6 +22,8 @@ namespace InventoryControl.Application.Services.AutoMapper
         public void DomainToResponse()
         {
             CreateMap<Domain.Entities.User, ResponseUserProfileJson>();
+
+            CreateMap<Domain.Entities.Item, ResponseItemJson>();
         }
     }
 }

@@ -1,4 +1,7 @@
 ﻿using InventoryControl.Application.Services.AutoMapper;
+using InventoryControl.Application.UseCases.Item.Delete;
+using InventoryControl.Application.UseCases.Item.Filter;
+using InventoryControl.Application.UseCases.Item.GetById;
 using InventoryControl.Application.UseCases.Item.Register;
 using InventoryControl.Application.UseCases.Item.Update;
 using InventoryControl.Application.UseCases.Login.DoLogin;
@@ -34,6 +37,9 @@ namespace InventoryControl.Application
             services.AddScoped<IRegisterItemUseCase, RegisterItemUseCase>();
             services.AddScoped<IUpdateItemUseCase, UpdateItemUseCase>();
             services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
+            services.AddScoped<IFilterItensUseCase, FilterItensUseCase>();
+            services.AddScoped<IGetItemByIdUseCase, GetItemByIdUseCase>();
+            services.AddScoped<IDeleteItemUseCase, DeleteItemUseCase>();
         }
     }
 }

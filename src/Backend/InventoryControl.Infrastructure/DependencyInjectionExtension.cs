@@ -57,6 +57,7 @@ namespace InventoryControl.Infrastructure
             services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
             services.AddScoped<IItemWriteOnlyRepository, ItemRepository>();
             services.AddScoped<IItemUpdateOnlyRepository, ItemRepository>();
+            services.AddScoped<IItemReadOnlyRepository, ItemRepository>();
         }
 
         private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)
