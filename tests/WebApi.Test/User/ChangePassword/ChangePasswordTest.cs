@@ -25,7 +25,7 @@ namespace WebApi.Test.User.ChangePassword
 
         [Fact]
         public async Task Success()
-        {
+        { 
             var token = JwtTokenGeneratorBuilder.Build().Generate(_userIdentifier);
 
             var request = RequestChangePasswordJsonBuilder.Build();

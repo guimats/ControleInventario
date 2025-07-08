@@ -10,10 +10,10 @@ namespace CommonTestUtilities.Repositories
 
         public ItemUpdateOnlyRepository() => _repository = new Mock<IItemUpdateOnlyRepository>();
 
-        public ItemUpdateOnlyRepository GetById(Item item)
+        public ItemUpdateOnlyRepository GetById(User user, Item item)
         {
             if (item.Id != 0)
-                _repository.Setup(i => i.GetById(item.Id)).ReturnsAsync(item);
+                _repository.Setup(i => i.GetById(user, item.Id)).ReturnsAsync(item);
             return this;
         }
 
