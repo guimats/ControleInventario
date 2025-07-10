@@ -1,9 +1,11 @@
 ﻿using FluentMigrator.Runner;
 using InventoryControl.Domain.Repositories;
 using InventoryControl.Domain.Repositories.Item;
+using InventoryControl.Domain.Repositories.ItemHistory;
 using InventoryControl.Domain.Repositories.User;
 using InventoryControl.Domain.Security.Cryptography;
 using InventoryControl.Domain.Security.Tokens;
+using InventoryControl.Domain.Services.ItemHistory;
 using InventoryControl.Domain.Services.LoggedUser;
 using InventoryControl.Infrastructure.DataAccess;
 using InventoryControl.Infrastructure.DataAccess.Repositories;
@@ -12,6 +14,7 @@ using InventoryControl.Infrastructure.Security.Tokens.Access.Generator;
 using InventoryControl.Infrastructure.Security.Tokens.Access.Validator;
 using InventoryControl.Infrastructure.Services.Cryptography;
 using InventoryControl.Infrastructure.Services.LoggedUser;
+using InventoryControl.Infrastructure.Services.UpdateHistory;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +30,7 @@ namespace InventoryControl.Infrastructure
             AddPasswordsEncripter(services, configuration);
             AddRepositories(services);
             AddLoggedUser(services);
+            AddUpdateHistory(services);
             AddTokens(services, configuration);
 
             //validando se está em ambiente de teste
@@ -58,6 +62,8 @@ namespace InventoryControl.Infrastructure
             services.AddScoped<IItemWriteOnlyRepository, ItemRepository>();
             services.AddScoped<IItemUpdateOnlyRepository, ItemRepository>();
             services.AddScoped<IItemReadOnlyRepository, ItemRepository>();
+            services.AddScoped<IItemHistoryWriteOnlyRepository, ItemHistoryRepository>();
+            services.AddScoped<IItemHistoryReadOnlyRepository, ItemHistoryRepository>();
         }
 
         private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)
@@ -90,5 +96,7 @@ namespace InventoryControl.Infrastructure
 
             services.AddScoped<IPasswordEncripter>(options => new Sha512Encripter(addtionalKey!));
         }
+
+        private static void AddUpdateHistory(IServiceCollection services) => services.AddScoped<IItemHistoryService, UpdateHistory>();
     }
 }

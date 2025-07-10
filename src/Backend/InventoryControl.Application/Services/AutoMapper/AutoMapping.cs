@@ -10,6 +10,7 @@ namespace InventoryControl.Application.Services.AutoMapper
         {
             RequestToDomain();
             DomainToResponse();
+            DomainToDomain();
         }
 
         public void RequestToDomain()
@@ -24,6 +25,13 @@ namespace InventoryControl.Application.Services.AutoMapper
             CreateMap<Domain.Entities.User, ResponseUserProfileJson>();
 
             CreateMap<Domain.Entities.Item, ResponseItemJson>();
+
+            CreateMap<Domain.Entities.ItemHistory, ResponseItemHistoryJson>();
+        }
+
+        public void DomainToDomain()
+        {
+            CreateMap<Domain.Entities.Item, Domain.Entities.Item>();
         }
     }
 }

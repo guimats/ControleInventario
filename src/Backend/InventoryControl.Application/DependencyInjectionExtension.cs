@@ -4,6 +4,7 @@ using InventoryControl.Application.UseCases.Item.Filter;
 using InventoryControl.Application.UseCases.Item.GetById;
 using InventoryControl.Application.UseCases.Item.Register;
 using InventoryControl.Application.UseCases.Item.Update;
+using InventoryControl.Application.UseCases.ItemHistory.GetHistory;
 using InventoryControl.Application.UseCases.Login.DoLogin;
 using InventoryControl.Application.UseCases.User.ChangePassword;
 using InventoryControl.Application.UseCases.User.Profile;
@@ -40,6 +41,7 @@ namespace InventoryControl.Application
             services.AddScoped<IFilterItensUseCase, FilterItensUseCase>();
             services.AddScoped<IGetItemByIdUseCase, GetItemByIdUseCase>();
             services.AddScoped<IDeleteItemUseCase, DeleteItemUseCase>();
+            services.AddScoped<IGetItemHistoryUseCase, GetItemHistoryUseCase>();
         }
     }
 }
