@@ -19,4 +19,8 @@
     <ProjectReference Include="..\InventoryControl.Domain\InventoryControl.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\UpdateHistory\" />
+  </ItemGroup>
+
 </Project>
