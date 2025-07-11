@@ -3,6 +3,7 @@ using CommonTestUtilities.LoggedUser;
 using CommonTestUtilities.Mapper;
 using CommonTestUtilities.Repositories;
 using CommonTestUtilities.Requests;
+using CommonTestUtilities.Services;
 using InventoryControl.Application.UseCases.Item.Update;
 using InventoryControl.Exceptions.ExceptionsBase;
 using Shouldly;
@@ -48,10 +49,11 @@ namespace UseCases.Test.Item.Update
         {
             var loggedUser = LoggedUserBuilder.Build(user);
             var repository = new ItemUpdateOnlyRepository().GetById(user,item).Build();
+            var historyService = ItemHistoryServiceBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build();
             var mapper = MapperBuilder.Build();
 
-            return new UpdateItemUseCase(repository, unitOfWork, mapper, loggedUser);
+            return new UpdateItemUseCase(repository, unitOfWork, mapper, loggedUser, historyService);
         }
     }
 }
