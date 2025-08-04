@@ -31,7 +31,7 @@ namespace InventoryControl.API.Filters
                 var exist = await _repository.ExistActiveUserWithIdentifier(userIdentifier);
                 if (!exist)
                 {
-                    throw new InventoryControlException(ResourceMessagesException.USER_WITHOUT_PERMISSION_ACCESS_RESOURCE);
+                    throw new UserNotExistException();
                 }
             }
             catch (SecurityTokenExpiredException)
@@ -57,7 +57,7 @@ namespace InventoryControl.API.Filters
 
             if (string.IsNullOrEmpty(authentication))
             {
-                throw new InventoryControlException(ResourceMessagesException.NO_TOKEN);
+                throw new NoTokenException();
             }
 
             // mesmo que fazer -> authentication[7..].Trim()

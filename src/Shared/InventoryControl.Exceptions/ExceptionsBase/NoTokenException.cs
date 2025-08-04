@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace InventoryControl.Exceptions.ExceptionsBase
 {
-    public class NotFoundException : InventoryControlException
+    public class NoTokenException : InventoryControlException
     {
-        public NotFoundException(string message) : base(message) { }
+        public NoTokenException() : base(ResourceMessagesException.NO_TOKEN) { }
 
         public override IList<string> GetMessages() => [Message];
-        public override HttpStatusCode GetStatusCode() => HttpStatusCode.NotFound;
+
+        public override HttpStatusCode GetStatusCode() => HttpStatusCode.Unauthorized;
     }
 }

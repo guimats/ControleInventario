@@ -50,8 +50,8 @@ namespace UseCases.Test.User.ChangePassword
 
             var exceptions = await act.ShouldThrowAsync<ErrorOnValidationException>();
 
-            exceptions.ErrorMessages.Count.ShouldBe(1);
-            exceptions.ErrorMessages.First().ShouldBe(ResourceMessagesException.EMPTY_PASSWORD);
+            exceptions.GetMessages().Count.ShouldBe(1);
+            exceptions.GetMessages().First().ShouldBe(ResourceMessagesException.EMPTY_PASSWORD);
         }
 
         [Fact]
@@ -67,8 +67,8 @@ namespace UseCases.Test.User.ChangePassword
 
             var exceptions = await act.ShouldThrowAsync<ErrorOnValidationException>();
 
-            exceptions.ErrorMessages.Count.ShouldBe(1);
-            exceptions.ErrorMessages.First().ShouldBe(ResourceMessagesException.PASSWORD_DIFFERENT_CURRENT_PASSWORD);
+            exceptions.GetMessages().Count.ShouldBe(1);
+            exceptions.GetMessages().First().ShouldBe(ResourceMessagesException.PASSWORD_DIFFERENT_CURRENT_PASSWORD);
         }
 
         private static ChangePasswordUseCase CreateUseCase(InventoryControl.Domain.Entities.User user)

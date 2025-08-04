@@ -41,8 +41,8 @@ namespace UseCases.Test.Item.Register
 
             var exceptions = await act.ShouldThrowAsync<ErrorOnValidationException>();
 
-            exceptions.ErrorMessages.Count.ShouldBe(1);
-            exceptions.ErrorMessages.ShouldContain(ResourceMessagesException.EMPTY_NAME);
+            exceptions.GetMessages().Count.ShouldBe(1);
+            exceptions.GetMessages().ShouldContain(ResourceMessagesException.EMPTY_NAME);
         }
 
         private static RegisterItemUseCase CreateUseCase(InventoryControl.Domain.Entities.User user)

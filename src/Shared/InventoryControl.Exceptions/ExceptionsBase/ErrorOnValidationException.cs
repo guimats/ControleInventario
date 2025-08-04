@@ -1,12 +1,18 @@
-﻿namespace InventoryControl.Exceptions.ExceptionsBase
+﻿using System.Net;
+
+namespace InventoryControl.Exceptions.ExceptionsBase
 {
     public class ErrorOnValidationException : InventoryControlException
     {
-        public IList<string> ErrorMessages { get; set; }
+        private readonly IList<string> _errorMessages;
 
         public ErrorOnValidationException(IList<string> errorMessages) : base(string.Empty)
         {
-            ErrorMessages = errorMessages;
+            _errorMessages = errorMessages;
         }
+
+        public override HttpStatusCode GetStatusCode() => HttpStatusCode.BadRequest;
+
+        public override IList<string> GetMessages() => _errorMessages;
     }
 }

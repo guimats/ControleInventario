@@ -48,8 +48,8 @@ namespace UseCases.Test.Item.Filter
 
             var execptions = await act.ShouldThrowAsync<ErrorOnValidationException>();
 
-            execptions.ErrorMessages.Count.ShouldBe(1);
-            execptions.ErrorMessages.ShouldContain(ResourceMessagesException.DEPARTMENT_NOT_SUPORTED);
+            execptions.GetMessages().Count.ShouldBe(1);
+            execptions.GetMessages().ShouldContain(ResourceMessagesException.DEPARTMENT_NOT_SUPORTED);
         }
 
         private static FilterItensUseCase CreateUseCase(

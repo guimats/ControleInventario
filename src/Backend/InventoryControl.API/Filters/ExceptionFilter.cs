@@ -11,35 +11,16 @@ namespace InventoryControl.API.Filters
     {
         public void OnException(ExceptionContext context)
         {
-            if (context.Exception is InventoryControlException)
-            {
-                HandleProjectException(context);
-            }
+            if (context.Exception is InventoryControlException inventoryControl)
+                HandleProjectException(context, inventoryControl);
             else
-            {
                 ThrowUnknowException(context);
-            }
         }
 
-        private static void HandleProjectException(ExceptionContext context)
+        private static void HandleProjectException(ExceptionContext context, InventoryControlException inventoryControl)
         {
-            if (context.Exception is InvalidLoginException)
-            {
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                context.Result = new UnauthorizedObjectResult(new ResponseErrorJson(context.Exception.Message));
-            }
-
-            else if (context.Exception is ErrorOnValidationException exception)
-            {
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Result = new BadRequestObjectResult(new ResponseErrorJson(exception!.ErrorMessages));
-            }
-
-            else if (context.Exception is NotFoundException)
-            {
-                context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
-                context.Result = new NotFoundObjectResult(new ResponseErrorJson(context.Exception.Message));
-            }
+            context.HttpContext.Response.StatusCode = (int)inventoryControl.GetStatusCode();
+            context.Result = new ObjectResult(new ResponseErrorJson(inventoryControl.GetMessages()));
         }
 
         private static void ThrowUnknowException(ExceptionContext context)

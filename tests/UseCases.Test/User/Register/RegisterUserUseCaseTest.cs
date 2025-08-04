@@ -36,8 +36,8 @@ namespace UseCases.Test.User.Register
 
             var exception = await act.ShouldThrowAsync<ErrorOnValidationException>();
 
-            exception.ErrorMessages.Count.ShouldBe(1);
-            exception.ErrorMessages.First().ShouldBe(ResourceMessagesException.EMAIL_ALREADY_REGISTERED);
+            exception.GetMessages().Count.ShouldBe(1);
+            exception.GetMessages().First().ShouldBe(ResourceMessagesException.EMAIL_ALREADY_REGISTERED);
         }
 
         [Fact]
@@ -51,8 +51,8 @@ namespace UseCases.Test.User.Register
 
             var exception = await act.ShouldThrowAsync<ErrorOnValidationException>();
 
-            exception.ErrorMessages.Count.ShouldBe(1);
-            exception.ErrorMessages.First().ShouldBe(ResourceMessagesException.EMPTY_NAME);
+            exception.GetMessages().Count.ShouldBe(1);
+            exception.GetMessages().First().ShouldBe(ResourceMessagesException.EMPTY_NAME);
         }
 
         private static RegisterUserUseCase CreateUseCase(string? email = null)
