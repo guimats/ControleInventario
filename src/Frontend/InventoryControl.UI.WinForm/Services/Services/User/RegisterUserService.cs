@@ -29,8 +29,6 @@ namespace InventoryControl.UI.WinForms.Services.Services.User
                 return await response.Content.ReadFromJsonAsync<ResponseRegisteredUserJson>();
             }
 
-            var responseContent = await response.Content.ReadAsStringAsync();
-
             var errors = await response.Content.ReadFromJsonAsync<ResponseErrorJson>();
 
             throw new ErrorOnValidationException(errors!.Errors!);

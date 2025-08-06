@@ -21,6 +21,7 @@ public partial class UserRegisterForm : Form
             var result = await _registerUserService.RegisterAsync(nameText.Text, emailText.Text, passwordText.Text);
 
             MessageBox.Show($"Usuário registrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Close();
         });
     }
 }

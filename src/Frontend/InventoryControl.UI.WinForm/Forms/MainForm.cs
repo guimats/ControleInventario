@@ -23,5 +23,16 @@ namespace InventoryControl.UI.WinForms.Forms
             var userRegisterForm = new UserRegisterForm(ServiceProvider.RegisterUserService);
             userRegisterForm.ShowDialog();
         }
+
+        private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var itemRegisterForm = new ItemRegisterForm(ServiceProvider.RegisterItemService);
+            itemRegisterForm.ShowDialog();
+        }
+
+        private void visualizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

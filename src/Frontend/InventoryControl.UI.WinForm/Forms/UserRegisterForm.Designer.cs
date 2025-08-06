@@ -43,25 +43,25 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nameLabel.Location = new Point(52, 90);
+            nameLabel.Location = new Point(45, 87);
             nameLabel.Margin = new Padding(4, 0, 4, 0);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(53, 21);
+            nameLabel.Size = new Size(66, 28);
             nameLabel.TabIndex = 0;
             nameLabel.Text = "Nome";
             // 
             // nameText
             // 
-            nameText.Location = new Point(112, 87);
+            nameText.Location = new Point(117, 87);
             nameText.Name = "nameText";
-            nameText.Size = new Size(219, 29);
+            nameText.Size = new Size(219, 34);
             nameText.TabIndex = 1;
             // 
             // emailText
             // 
-            emailText.Location = new Point(112, 132);
+            emailText.Location = new Point(117, 132);
             emailText.Name = "emailText";
-            emailText.Size = new Size(219, 29);
+            emailText.Size = new Size(219, 34);
             emailText.TabIndex = 3;
             // 
             // emailLabel
@@ -69,19 +69,19 @@
             emailLabel.AutoSize = true;
             emailLabel.BackColor = SystemColors.Control;
             emailLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            emailLabel.Location = new Point(52, 135);
+            emailLabel.Location = new Point(45, 132);
             emailLabel.Margin = new Padding(4, 0, 4, 0);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new Size(54, 21);
+            emailLabel.Size = new Size(67, 28);
             emailLabel.TabIndex = 2;
             emailLabel.Text = "E-mail";
             // 
             // passwordText
             // 
-            passwordText.Location = new Point(112, 178);
+            passwordText.Location = new Point(117, 175);
             passwordText.Name = "passwordText";
             passwordText.PasswordChar = '*';
-            passwordText.Size = new Size(219, 29);
+            passwordText.Size = new Size(219, 34);
             passwordText.TabIndex = 5;
             // 
             // passwordLabel
@@ -89,10 +89,10 @@
             passwordLabel.AutoSize = true;
             passwordLabel.BackColor = SystemColors.Control;
             passwordLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            passwordLabel.Location = new Point(52, 181);
+            passwordLabel.Location = new Point(45, 178);
             passwordLabel.Margin = new Padding(4, 0, 4, 0);
             passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new Size(53, 21);
+            passwordLabel.Size = new Size(65, 28);
             passwordLabel.TabIndex = 4;
             passwordLabel.Text = "Senha";
             // 
@@ -100,9 +100,9 @@
             // 
             registerBtn.BackColor = SystemColors.ControlLight;
             registerBtn.FlatStyle = FlatStyle.Popup;
-            registerBtn.Location = new Point(171, 224);
+            registerBtn.Location = new Point(160, 226);
             registerBtn.Name = "registerBtn";
-            registerBtn.Size = new Size(93, 33);
+            registerBtn.Size = new Size(113, 44);
             registerBtn.TabIndex = 6;
             registerBtn.Text = "Cadastrar";
             registerBtn.UseVisualStyleBackColor = false;
@@ -110,17 +110,19 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Image = Properties.Resources.user_icon;
             pictureBox1.Location = new Point(180, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(68, 57);
+            pictureBox1.Size = new Size(73, 69);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
             // UserRegisterForm
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(411, 286);
+            ClientSize = new Size(422, 291);
             Controls.Add(pictureBox1);
             Controls.Add(registerBtn);
             Controls.Add(passwordText);
