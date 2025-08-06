@@ -1,4 +1,4 @@
-﻿using InventoryControl.UI.WinForms.Services.Interfaces;
+﻿using InventoryControl.UI.WinForms.Services.Interfaces.User;
 
 namespace InventoryControl.UI.WinForms.Forms
 {
@@ -14,23 +14,17 @@ namespace InventoryControl.UI.WinForms.Forms
 
         private async void loginButton_Click(object sender, EventArgs e)
         {
-            var resultado = await _authService.LoginAsync(emailText.Text, passwordText.Text);
-
-            if (resultado.Valid)
+            var result = await _authService.LoginAsync(emailText.Text, passwordText.Text);
+            if (result.Valid)
             {
-                MessageBox.Show(resultado.Message[0], "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(result.Message[0], "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
             }
             else
             {
-                MessageBox.Show(resultado.Message[0], "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(result.Message[0], "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

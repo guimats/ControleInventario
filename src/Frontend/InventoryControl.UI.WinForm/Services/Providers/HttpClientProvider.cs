@@ -1,4 +1,4 @@
-﻿using InventoryControl.UI.WinForms.Services.Interfaces;
+﻿using InventoryControl.UI.WinForms.Services.Interfaces.User;
 using System.Net.Http.Headers;
 
 namespace InventoryControl.UI.WinForms.Services.Providers;

@@ -1,19 +1,16 @@
 ﻿using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
-using InventoryControl.UI.WinForms.Services.Interfaces;
+using InventoryControl.UI.WinForms.Services.Interfaces.User;
 using System.Net;
 using System.Net.Http.Json;
 
-namespace InventoryControl.UI.WinForms.Services.Services;
+namespace InventoryControl.UI.WinForms.Services.Services.User;
 
 public class AuthService : IAuthService
 {
     private readonly IHttpClientProvider _httpClientProvider;
-
-    public AuthService(IHttpClientProvider httpClientProvider)
-    {
-        _httpClientProvider = httpClientProvider;
-    }
+        
+    public AuthService(IHttpClientProvider httpClientProvider) => _httpClientProvider = httpClientProvider;
 
     public async Task<ResponseLoginResultJson> LoginAsync(string email, string password)
     {
@@ -41,6 +38,6 @@ public class AuthService : IAuthService
 
         var errors = await response.Content.ReadFromJsonAsync<ResponseErrorJson>();
 
-        return new ResponseLoginResultJson { Message = errors!.Errors };
+        return new ResponseLoginResultJson { Message = errors!.Errors! };
     }
 }

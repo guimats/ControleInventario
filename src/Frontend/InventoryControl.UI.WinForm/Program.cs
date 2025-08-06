@@ -9,12 +9,11 @@ namespace InventoryControl.UI.WinForms.Forms
         {
             ApplicationConfiguration.Initialize();
 
-
             var loginForm = new LoginForm(ServiceProvider.AuthService);
             var loginResult = loginForm.ShowDialog();
 
             if (loginResult == DialogResult.OK)
-                Application.Run(new MainForm());
+                Application.Run(new mainForm());
         }
     }
 }

@@ -45,41 +45,44 @@ namespace InventoryControl.UI.WinForms.Forms
             // emailLabel
             // 
             emailLabel.AutoSize = true;
-            emailLabel.Location = new Point(102, 145);
+            emailLabel.Location = new Point(53, 119);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new Size(52, 20);
+            emailLabel.Size = new Size(41, 15);
             emailLabel.TabIndex = 0;
             emailLabel.Text = "E-mail";
             // 
             // emailText
             // 
-            emailText.Location = new Point(181, 142);
+            emailText.Location = new Point(122, 116);
+            emailText.Margin = new Padding(3, 2, 3, 2);
             emailText.Name = "emailText";
-            emailText.Size = new Size(262, 27);
+            emailText.Size = new Size(230, 23);
             emailText.TabIndex = 1;
             // 
             // passwordText
             // 
-            passwordText.Location = new Point(181, 188);
+            passwordText.Location = new Point(122, 151);
+            passwordText.Margin = new Padding(3, 2, 3, 2);
             passwordText.Name = "passwordText";
             passwordText.PasswordChar = '*';
-            passwordText.Size = new Size(262, 27);
+            passwordText.Size = new Size(230, 23);
             passwordText.TabIndex = 3;
             // 
             // passwordLabel
             // 
             passwordLabel.AutoSize = true;
-            passwordLabel.Location = new Point(102, 191);
+            passwordLabel.Location = new Point(53, 153);
             passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new Size(49, 20);
+            passwordLabel.Size = new Size(39, 15);
             passwordLabel.TabIndex = 2;
             passwordLabel.Text = "Senha";
             // 
             // loginButton
             // 
-            loginButton.Location = new Point(231, 250);
+            loginButton.Location = new Point(166, 198);
+            loginButton.Margin = new Padding(3, 2, 3, 2);
             loginButton.Name = "loginButton";
-            loginButton.Size = new Size(139, 40);
+            loginButton.Size = new Size(122, 30);
             loginButton.TabIndex = 4;
             loginButton.Text = "Login";
             loginButton.UseVisualStyleBackColor = true;
@@ -88,9 +91,10 @@ namespace InventoryControl.UI.WinForms.Forms
             // loginPictureBox
             // 
             loginPictureBox.Image = (System.Drawing.Image)resources.GetObject("loginPictureBox.Image");
-            loginPictureBox.Location = new Point(243, 24);
+            loginPictureBox.Location = new Point(177, 28);
+            loginPictureBox.Margin = new Padding(3, 2, 3, 2);
             loginPictureBox.Name = "loginPictureBox";
-            loginPictureBox.Size = new Size(97, 86);
+            loginPictureBox.Size = new Size(85, 64);
             loginPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             loginPictureBox.TabIndex = 5;
             loginPictureBox.TabStop = false;
@@ -98,9 +102,9 @@ namespace InventoryControl.UI.WinForms.Forms
             // LoginForm
             // 
             AcceptButton = loginButton;
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(594, 328);
+            ClientSize = new Size(449, 264);
             Controls.Add(loginPictureBox);
             Controls.Add(loginButton);
             Controls.Add(passwordText);
@@ -108,10 +112,11 @@ namespace InventoryControl.UI.WinForms.Forms
             Controls.Add(emailText);
             Controls.Add(emailLabel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de Inventário";
-            Load += LoginForm_Load;
             ((System.ComponentModel.ISupportInitialize)loginPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();

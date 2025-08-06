@@ -1,4 +1,4 @@
-﻿namespace InventoryControl.UI.WinForms.Services.Interfaces;
+﻿namespace InventoryControl.UI.WinForms.Services.Interfaces.User;
 
 public interface IHttpClientProvider
 {
