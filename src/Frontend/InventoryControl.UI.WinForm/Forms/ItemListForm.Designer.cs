@@ -29,45 +29,51 @@
         private void InitializeComponent()
         {
             filterGroupBox = new GroupBox();
-            filterNameLabel = new Label();
-            filterNameText = new TextBox();
+            filterDepartmentLabel = new Label();
+            departmentListBox = new CheckedListBox();
             filterCodeText = new TextBox();
             filterCodeLabel = new Label();
+            filterNameText = new TextBox();
+            filterNameLabel = new Label();
             filterGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // filterGroupBox
             // 
+            filterGroupBox.Controls.Add(filterDepartmentLabel);
+            filterGroupBox.Controls.Add(departmentListBox);
             filterGroupBox.Controls.Add(filterCodeText);
             filterGroupBox.Controls.Add(filterCodeLabel);
             filterGroupBox.Controls.Add(filterNameText);
             filterGroupBox.Controls.Add(filterNameLabel);
-            filterGroupBox.Location = new Point(14, 14);
+            filterGroupBox.Location = new Point(14, 4);
             filterGroupBox.Name = "filterGroupBox";
-            filterGroupBox.Size = new Size(835, 129);
+            filterGroupBox.Size = new Size(862, 186);
             filterGroupBox.TabIndex = 0;
             filterGroupBox.TabStop = false;
             filterGroupBox.Text = "Filtros";
             // 
-            // filterNameLabel
+            // filterDepartmentLabel
             // 
-            filterNameLabel.AutoSize = true;
-            filterNameLabel.Location = new Point(14, 37);
-            filterNameLabel.Name = "filterNameLabel";
-            filterNameLabel.Size = new Size(57, 23);
-            filterNameLabel.TabIndex = 0;
-            filterNameLabel.Text = "Nome";
+            filterDepartmentLabel.AutoSize = true;
+            filterDepartmentLabel.Location = new Point(296, 22);
+            filterDepartmentLabel.Name = "filterDepartmentLabel";
+            filterDepartmentLabel.Size = new Size(121, 23);
+            filterDepartmentLabel.TabIndex = 5;
+            filterDepartmentLabel.Text = "Departamento";
             // 
-            // filterNameText
+            // departmentListBox
             // 
-            filterNameText.Location = new Point(85, 34);
-            filterNameText.Name = "filterNameText";
-            filterNameText.Size = new Size(151, 30);
-            filterNameText.TabIndex = 1;
+            departmentListBox.FormattingEnabled = true;
+            departmentListBox.Items.AddRange(new object[] { "" });
+            departmentListBox.Location = new Point(296, 48);
+            departmentListBox.Name = "departmentListBox";
+            departmentListBox.Size = new Size(157, 104);
+            departmentListBox.TabIndex = 4;
             // 
             // filterCodeText
             // 
-            filterCodeText.Location = new Point(85, 82);
+            filterCodeText.Location = new Point(87, 107);
             filterCodeText.Name = "filterCodeText";
             filterCodeText.Size = new Size(151, 30);
             filterCodeText.TabIndex = 3;
@@ -75,11 +81,27 @@
             // filterCodeLabel
             // 
             filterCodeLabel.AutoSize = true;
-            filterCodeLabel.Location = new Point(14, 85);
+            filterCodeLabel.Location = new Point(16, 110);
             filterCodeLabel.Name = "filterCodeLabel";
             filterCodeLabel.Size = new Size(65, 23);
             filterCodeLabel.TabIndex = 2;
             filterCodeLabel.Text = "Código";
+            // 
+            // filterNameText
+            // 
+            filterNameText.Location = new Point(87, 59);
+            filterNameText.Name = "filterNameText";
+            filterNameText.Size = new Size(151, 30);
+            filterNameText.TabIndex = 1;
+            // 
+            // filterNameLabel
+            // 
+            filterNameLabel.AutoSize = true;
+            filterNameLabel.Location = new Point(16, 62);
+            filterNameLabel.Name = "filterNameLabel";
+            filterNameLabel.Size = new Size(57, 23);
+            filterNameLabel.TabIndex = 0;
+            filterNameLabel.Text = "Nome";
             // 
             // ItemListForm
             // 
@@ -102,5 +124,7 @@
         private Label filterCodeLabel;
         private TextBox filterNameText;
         private Label filterNameLabel;
+        private CheckedListBox departmentListBox;
+        private Label filterDepartmentLabel;
     }
 }
