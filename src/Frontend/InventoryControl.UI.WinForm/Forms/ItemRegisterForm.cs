@@ -2,6 +2,7 @@
 using InventoryControl.Communication.Requests;
 using InventoryControl.Exceptions;
 using InventoryControl.Exceptions.ExceptionsBase;
+using InventoryControl.UI.WinForms.CommonUtilities;
 using InventoryControl.UI.WinForms.Services.Helpers;
 using InventoryControl.UI.WinForms.Services.Interfaces.Item;
 
@@ -80,10 +81,7 @@ namespace InventoryControl.UI.WinForms.Forms
 
         private void itemCodeText_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true; // cancela o pressionamento da tecla
-            }
+            KeyControl.OnlyNumeric(e);
         }
     }
 }

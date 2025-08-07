@@ -1,13 +1,4 @@
 ﻿using InventoryControl.UI.WinForms.Services.Providers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace InventoryControl.UI.WinForms.Forms
 {
@@ -32,7 +23,8 @@ namespace InventoryControl.UI.WinForms.Forms
 
         private void visualizarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var itemListForm = new ItemListForm(ServiceProvider.FilterItensService, ServiceProvider.DeleteItemService);
+            itemListForm.ShowDialog();
         }
     }
 }

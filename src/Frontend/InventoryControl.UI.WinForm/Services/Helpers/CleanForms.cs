@@ -14,6 +14,9 @@ public static class CleanForms
 
             else if (ctrl is CheckBox checkBox)
                 checkBox.Checked = false;
+
+            else if (ctrl is RadioButton radioButton)
+                radioButton.Checked = false;
         }
 
         foreach (var group in controls.OfType<GroupBox>())
@@ -28,13 +31,13 @@ public static class CleanForms
                 textBox.Clear();
 
             else if (ctrl is ComboBox comboBox)
-            {
-                comboBox.SelectedIndex = -1;
-                comboBox.Text = "-- Selecione --";
-            }
+                StandardValues.SetComboBoxValue(comboBox);
 
             else if (ctrl is CheckBox checkBox)
                 checkBox.Checked = false;
+
+            else if (ctrl is RadioButton radioButton)
+                radioButton.Checked = false;
 
             else if (ctrl.HasChildren)
                 CleanControls(ctrl.Controls);

@@ -124,4 +124,7 @@
   <data name="user-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\user-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lixo-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\lixo-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
