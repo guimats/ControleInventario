@@ -42,12 +42,6 @@ public partial class ItemListForm : Form
     {
         await ExceptionHandler.TryExecuteAsync(async () =>
         {
-            var name = filterNameText.Text;
-            var code = filterCodeText.Text;
-
-            var departments = CheckBoxHelper.GetValues<Department>(departmentGroupBox);
-            var productTypes = CheckBoxHelper.GetValues<ProductType>(productTypeGroupBox);
-
             var selectedRadioBtn = statusGroupBox
                             .Controls
                             .OfType<RadioButton>()
@@ -57,10 +51,10 @@ public partial class ItemListForm : Form
 
             var request = new RequestFilterItemJson
             {
-                ItemName = name,
-                InternalCode = code,
-                Departments = departments,
-                ProductTypes = productTypes,
+                ItemName = filterNameText.Text,
+                InternalCode = filterCodeText.Text,
+                Departments = CheckBoxHelper.GetValues<Department>(departmentGroupBox),
+                ProductTypes = CheckBoxHelper.GetValues<ProductType>(productTypeGroupBox),
                 ItemStatus = status
             };
 
@@ -142,4 +136,12 @@ public partial class ItemListForm : Form
         totalLabel.Text = $"Total de itens: {_cachedItems.Count}";
     }
 
+    private void historyItem_Click(object sender, EventArgs e)
+    {
+        var selectedRow = itensDataGrid.SelectedRows[0];
+        var item = (ResponseItemJson)selectedRow.DataBoundItem;
+
+        var itemHistoryForm = new ItemHistory(ServiceProvider.ItemHistoryService, item.Id);
+        itemHistoryForm.ShowDialog();
+    }
 }

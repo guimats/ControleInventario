@@ -53,6 +53,15 @@ namespace InventoryControl.UI.WinForms.Forms
                 itemCodeText.Text = _itemToEdit.InternalCode;
                 itemDepartmentBox.SelectedItem = _itemToEdit.Department;
                 itemTypeBox.SelectedItem = _itemToEdit.ProductType;
+
+                var radioMap = new Dictionary<ItemStatus, RadioButton>
+                {
+                    { ItemStatus.Estoque, estoqueRadioBtn },
+                    { ItemStatus.Em_Uso, emUsoRadioBtn },
+                    { ItemStatus.Defeito, defeitoRadioBtn },
+                };
+
+               radioMap[_itemToEdit.ItemStatus!.Value].Checked = true;
             }
         }
 
@@ -94,11 +103,6 @@ namespace InventoryControl.UI.WinForms.Forms
 
         private RequestItemJson BuildRequestFromForm()
         {
-            var name = itemNameText.Text;
-            var brand = itemBrandText.Text;
-            var employee = itemEmployeeText.Text;
-            var internalCode = itemCodeText.Text;
-
             if (itemDepartmentBox.SelectedItem is not Department department)
                 throw new ErrorOnValidationException([ResourceMessagesException.DEPARTMENT_NOT_SUPORTED]);
 
@@ -113,10 +117,10 @@ namespace InventoryControl.UI.WinForms.Forms
 
             return new RequestItemJson
             {
-                Name = name,
-                Brand = brand,
-                Employee = employee,
-                InternalCode = internalCode,
+                Name = itemNameText.Text,
+                Brand = itemBrandText.Text,
+                Employee = itemEmployeeText.Text,
+                InternalCode = itemCodeText.Text,
                 Department = department,
                 ProductType = productType,
                 ItemStatus = status

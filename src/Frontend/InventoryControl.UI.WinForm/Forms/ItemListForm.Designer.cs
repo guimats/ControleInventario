@@ -48,6 +48,7 @@
             itemMenuStrip = new ContextMenuStrip(components);
             editItem = new ToolStripMenuItem();
             deleteItem = new ToolStripMenuItem();
+            historyItem = new ToolStripMenuItem();
             filterGroupBox.SuspendLayout();
             statusGroupBox.SuspendLayout();
             itensGroupBox.SuspendLayout();
@@ -231,14 +232,15 @@
             // itemMenuStrip
             // 
             itemMenuStrip.ImageScalingSize = new Size(20, 20);
-            itemMenuStrip.Items.AddRange(new ToolStripItem[] { editItem, deleteItem });
+            itemMenuStrip.Items.AddRange(new ToolStripItem[] { editItem, deleteItem, historyItem });
             itemMenuStrip.Name = "itemMenuStrip";
             itemMenuStrip.RenderMode = ToolStripRenderMode.Professional;
-            itemMenuStrip.Size = new Size(185, 78);
+            itemMenuStrip.Size = new Size(185, 104);
             // 
             // editItem
             // 
             editItem.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            editItem.Image = Properties.Resources.edit_icon;
             editItem.Name = "editItem";
             editItem.Size = new Size(184, 26);
             editItem.Text = "Editar";
@@ -252,6 +254,15 @@
             deleteItem.Size = new Size(184, 26);
             deleteItem.Text = "Deletar";
             deleteItem.Click += deleteItem_Click;
+            // 
+            // historyItem
+            // 
+            historyItem.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            historyItem.Image = Properties.Resources.history_icon;
+            historyItem.Name = "historyItem";
+            historyItem.Size = new Size(184, 26);
+            historyItem.Text = "Histórico";
+            historyItem.Click += historyItem_Click;
             // 
             // ItemListForm
             // 
@@ -296,5 +307,6 @@
         private ContextMenuStrip itemMenuStrip;
         private ToolStripMenuItem deleteItem;
         private ToolStripMenuItem editItem;
+        private ToolStripMenuItem historyItem;
     }
 }
