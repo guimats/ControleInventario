@@ -17,7 +17,7 @@ namespace InventoryControl.UI.WinForms.Forms
 
         private void cadastrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var itemRegisterForm = new ItemRegisterForm(ServiceProvider.RegisterItemService);
+            var itemRegisterForm = new ItemForm(ServiceProvider.RegisterItemService);
             itemRegisterForm.ShowDialog();
         }
 

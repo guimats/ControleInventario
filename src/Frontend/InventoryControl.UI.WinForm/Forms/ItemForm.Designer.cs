@@ -1,6 +1,6 @@
 ﻿namespace InventoryControl.UI.WinForms.Forms
 {
-    partial class ItemRegisterForm
+    partial class ItemForm
     {
         /// <summary>
         /// Required designer variable.
@@ -47,7 +47,7 @@
             emUsoRadioBtn = new RadioButton();
             estoqueRadioBtn = new RadioButton();
             cleanBtn = new Button();
-            registerBtn = new Button();
+            saveBtn = new Button();
             productGroupBox.SuspendLayout();
             statusGroupBox.SuspendLayout();
             SuspendLayout();
@@ -55,110 +55,110 @@
             // itemNameLabel
             // 
             itemNameLabel.AutoSize = true;
-            itemNameLabel.Location = new Point(25, 45);
+            itemNameLabel.Location = new Point(22, 40);
             itemNameLabel.Name = "itemNameLabel";
-            itemNameLabel.Size = new Size(65, 25);
+            itemNameLabel.Size = new Size(47, 17);
             itemNameLabel.TabIndex = 0;
             itemNameLabel.Text = "Nome:";
             // 
             // itemNameText
             // 
-            itemNameText.Location = new Point(162, 45);
+            itemNameText.Location = new Point(142, 40);
             itemNameText.Name = "itemNameText";
-            itemNameText.Size = new Size(291, 31);
+            itemNameText.Size = new Size(255, 25);
             itemNameText.TabIndex = 1;
             // 
             // itemBrandText
             // 
-            itemBrandText.Location = new Point(162, 82);
+            itemBrandText.Location = new Point(142, 73);
             itemBrandText.Name = "itemBrandText";
-            itemBrandText.Size = new Size(291, 31);
+            itemBrandText.Size = new Size(255, 25);
             itemBrandText.TabIndex = 2;
             // 
             // itemBrandLabel
             // 
             itemBrandLabel.AutoSize = true;
-            itemBrandLabel.Location = new Point(26, 82);
+            itemBrandLabel.Location = new Point(23, 73);
             itemBrandLabel.Name = "itemBrandLabel";
-            itemBrandLabel.Size = new Size(64, 25);
+            itemBrandLabel.Size = new Size(48, 17);
             itemBrandLabel.TabIndex = 2;
             itemBrandLabel.Text = "Marca:";
             // 
             // itemEmployeeText
             // 
-            itemEmployeeText.Location = new Point(162, 40);
+            itemEmployeeText.Location = new Point(142, 36);
             itemEmployeeText.Name = "itemEmployeeText";
-            itemEmployeeText.Size = new Size(291, 31);
+            itemEmployeeText.Size = new Size(255, 25);
             itemEmployeeText.TabIndex = 4;
             // 
             // itemEmployeeLabel
             // 
             itemEmployeeLabel.AutoSize = true;
-            itemEmployeeLabel.Location = new Point(26, 43);
+            itemEmployeeLabel.Location = new Point(23, 38);
             itemEmployeeLabel.Name = "itemEmployeeLabel";
-            itemEmployeeLabel.Size = new Size(108, 25);
+            itemEmployeeLabel.Size = new Size(78, 17);
             itemEmployeeLabel.TabIndex = 4;
             itemEmployeeLabel.Text = "Funcionário:";
             // 
             // itemCodeText
             // 
-            itemCodeText.Location = new Point(162, 119);
+            itemCodeText.Location = new Point(142, 106);
             itemCodeText.Name = "itemCodeText";
-            itemCodeText.Size = new Size(291, 31);
+            itemCodeText.Size = new Size(255, 25);
             itemCodeText.TabIndex = 3;
             itemCodeText.KeyPress += itemCodeText_KeyPress;
             // 
             // itemCodeLabel
             // 
             itemCodeLabel.AutoSize = true;
-            itemCodeLabel.Location = new Point(25, 119);
+            itemCodeLabel.Location = new Point(22, 106);
             itemCodeLabel.Name = "itemCodeLabel";
-            itemCodeLabel.Size = new Size(75, 25);
+            itemCodeLabel.Size = new Size(54, 17);
             itemCodeLabel.TabIndex = 6;
             itemCodeLabel.Text = "Código:";
             // 
             // itemDepartmentLabel
             // 
             itemDepartmentLabel.AutoSize = true;
-            itemDepartmentLabel.Location = new Point(25, 80);
+            itemDepartmentLabel.Location = new Point(22, 72);
             itemDepartmentLabel.Name = "itemDepartmentLabel";
-            itemDepartmentLabel.Size = new Size(131, 25);
+            itemDepartmentLabel.Size = new Size(95, 17);
             itemDepartmentLabel.TabIndex = 8;
             itemDepartmentLabel.Text = "Departamento:";
             // 
             // itemDepartmentBox
             // 
             itemDepartmentBox.FormattingEnabled = true;
-            itemDepartmentBox.Location = new Point(162, 77);
+            itemDepartmentBox.Location = new Point(142, 69);
             itemDepartmentBox.Name = "itemDepartmentBox";
-            itemDepartmentBox.Size = new Size(291, 33);
+            itemDepartmentBox.Size = new Size(255, 25);
             itemDepartmentBox.TabIndex = 5;
             itemDepartmentBox.Text = "-- Selecione --";
             // 
             // itemTypeBox
             // 
             itemTypeBox.FormattingEnabled = true;
-            itemTypeBox.Location = new Point(162, 115);
+            itemTypeBox.Location = new Point(142, 103);
             itemTypeBox.Name = "itemTypeBox";
-            itemTypeBox.Size = new Size(291, 33);
+            itemTypeBox.Size = new Size(255, 25);
             itemTypeBox.TabIndex = 6;
             itemTypeBox.Text = "-- Selecione --";
             // 
             // itemTypeLabel
             // 
             itemTypeLabel.AutoSize = true;
-            itemTypeLabel.Location = new Point(26, 118);
+            itemTypeLabel.Location = new Point(23, 106);
             itemTypeLabel.Name = "itemTypeLabel";
-            itemTypeLabel.Size = new Size(51, 25);
+            itemTypeLabel.Size = new Size(37, 17);
             itemTypeLabel.TabIndex = 10;
             itemTypeLabel.Text = "Tipo:";
             // 
             // itemStatusLabel
             // 
             itemStatusLabel.AutoSize = true;
-            itemStatusLabel.Location = new Point(26, 157);
+            itemStatusLabel.Location = new Point(23, 140);
             itemStatusLabel.Name = "itemStatusLabel";
-            itemStatusLabel.Size = new Size(64, 25);
+            itemStatusLabel.Size = new Size(46, 17);
             itemStatusLabel.TabIndex = 12;
             itemStatusLabel.Text = "Status:";
             // 
@@ -170,9 +170,9 @@
             productGroupBox.Controls.Add(itemBrandText);
             productGroupBox.Controls.Add(itemCodeLabel);
             productGroupBox.Controls.Add(itemCodeText);
-            productGroupBox.Location = new Point(22, 36);
+            productGroupBox.Location = new Point(19, 32);
             productGroupBox.Name = "productGroupBox";
-            productGroupBox.Size = new Size(506, 177);
+            productGroupBox.Size = new Size(443, 158);
             productGroupBox.TabIndex = 14;
             productGroupBox.TabStop = false;
             productGroupBox.Text = "Dados do produto";
@@ -189,9 +189,9 @@
             statusGroupBox.Controls.Add(itemDepartmentBox);
             statusGroupBox.Controls.Add(itemTypeBox);
             statusGroupBox.Controls.Add(itemTypeLabel);
-            statusGroupBox.Location = new Point(22, 230);
+            statusGroupBox.Location = new Point(19, 206);
             statusGroupBox.Name = "statusGroupBox";
-            statusGroupBox.Size = new Size(506, 203);
+            statusGroupBox.Size = new Size(443, 182);
             statusGroupBox.TabIndex = 15;
             statusGroupBox.TabStop = false;
             statusGroupBox.Text = "Classificação e Status";
@@ -199,9 +199,9 @@
             // defeitoRadioBtn
             // 
             defeitoRadioBtn.AutoSize = true;
-            defeitoRadioBtn.Location = new Point(361, 157);
+            defeitoRadioBtn.Location = new Point(316, 140);
             defeitoRadioBtn.Name = "defeitoRadioBtn";
-            defeitoRadioBtn.Size = new Size(91, 29);
+            defeitoRadioBtn.Size = new Size(68, 21);
             defeitoRadioBtn.TabIndex = 10;
             defeitoRadioBtn.Text = "Defeito";
             defeitoRadioBtn.UseVisualStyleBackColor = true;
@@ -209,9 +209,9 @@
             // emUsoRadioBtn
             // 
             emUsoRadioBtn.AutoSize = true;
-            emUsoRadioBtn.Location = new Point(265, 157);
+            emUsoRadioBtn.Location = new Point(232, 140);
             emUsoRadioBtn.Name = "emUsoRadioBtn";
-            emUsoRadioBtn.Size = new Size(92, 29);
+            emUsoRadioBtn.Size = new Size(69, 21);
             emUsoRadioBtn.TabIndex = 9;
             emUsoRadioBtn.Text = "Em uso";
             emUsoRadioBtn.UseVisualStyleBackColor = true;
@@ -220,9 +220,9 @@
             // 
             estoqueRadioBtn.AutoSize = true;
             estoqueRadioBtn.Checked = true;
-            estoqueRadioBtn.Location = new Point(162, 157);
+            estoqueRadioBtn.Location = new Point(142, 140);
             estoqueRadioBtn.Name = "estoqueRadioBtn";
-            estoqueRadioBtn.Size = new Size(97, 29);
+            estoqueRadioBtn.Size = new Size(73, 21);
             estoqueRadioBtn.TabIndex = 8;
             estoqueRadioBtn.TabStop = true;
             estoqueRadioBtn.Text = "Estoque";
@@ -230,39 +230,40 @@
             // 
             // cleanBtn
             // 
-            cleanBtn.Location = new Point(305, 457);
+            cleanBtn.Location = new Point(267, 409);
             cleanBtn.Name = "cleanBtn";
-            cleanBtn.Size = new Size(103, 39);
+            cleanBtn.Size = new Size(90, 35);
             cleanBtn.TabIndex = 11;
             cleanBtn.Text = "Limpar";
             cleanBtn.UseVisualStyleBackColor = true;
             cleanBtn.Click += cleanBtn_Click;
             // 
-            // registerBtn
+            // saveBtn
             // 
-            registerBtn.Location = new Point(425, 457);
-            registerBtn.Name = "registerBtn";
-            registerBtn.Size = new Size(103, 39);
-            registerBtn.TabIndex = 12;
-            registerBtn.Text = "Salvar";
-            registerBtn.UseVisualStyleBackColor = true;
-            registerBtn.Click += registerBtn_Click;
+            saveBtn.Location = new Point(372, 409);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(90, 35);
+            saveBtn.TabIndex = 12;
+            saveBtn.Text = "Salvar";
+            saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Click += saveBtn_Click;
             // 
-            // ItemRegisterForm
+            // ItemForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(553, 508);
-            Controls.Add(registerBtn);
+            ClientSize = new Size(484, 455);
+            Controls.Add(saveBtn);
             Controls.Add(cleanBtn);
             Controls.Add(statusGroupBox);
             Controls.Add(productGroupBox);
-            Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
             MaximizeBox = false;
-            Name = "ItemRegisterForm";
+            Name = "ItemForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Item";
+            Load += ItemForm_Load;
             productGroupBox.ResumeLayout(false);
             productGroupBox.PerformLayout();
             statusGroupBox.ResumeLayout(false);
@@ -291,6 +292,6 @@
         private RadioButton emUsoRadioBtn;
         private RadioButton estoqueRadioBtn;
         private Button cleanBtn;
-        private Button registerBtn;
+        private Button saveBtn;
     }
 }

@@ -5,7 +5,6 @@ using InventoryControl.UI.WinForms.CommonUtilities;
 using InventoryControl.UI.WinForms.Services.Helpers;
 using InventoryControl.UI.WinForms.Services.Interfaces.Item;
 using InventoryControl.UI.WinForms.Services.Providers;
-using InventoryControl.UI.WinForms.Services.Services.Item;
 using System.ComponentModel;
 
 namespace InventoryControl.UI.WinForms.Forms;
@@ -96,7 +95,7 @@ public partial class ItemListForm : Form
         if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
         {
             itensDataGrid.ClearSelection(); // limpando seleções anteriores
-            itensDataGrid.Rows[e.RowIndex].Selected = true;
+            itensDataGrid.Rows[e.RowIndex].Selected = true; // selecionando
             itensDataGrid.CurrentCell = itensDataGrid.Rows[e.RowIndex].Cells[0]; // prevenção de problemas
         }
     }
@@ -109,8 +108,8 @@ public partial class ItemListForm : Form
 
         var confirm = MessageBox.Show(
             $"Deseja realmente excluir o item '{item.Name} - {item.Brand}'",
-            "Corfirmar Exclusão", 
-            MessageBoxButtons.YesNo, 
+            "Corfirmar Exclusão",
+            MessageBoxButtons.YesNo,
             MessageBoxIcon.Warning);
 
         if (confirm == DialogResult.Yes)
@@ -122,10 +121,25 @@ public partial class ItemListForm : Form
         }
     }
 
+    private void editItem_Click(object sender, EventArgs e)
+    {
+        var selectedRow = itensDataGrid.SelectedRows[0];
+        var item = (ResponseItemJson)selectedRow.DataBoundItem;
+
+        var itemForm = new ItemForm(ServiceProvider.RegisterItemService, item);
+        itemForm.ShowDialog();
+    }
+
+    private void ItemListForm_FormClosed(object sender, FormClosedEventArgs e)
+    {
+        _cachedItems.Clear();
+    }
+
     private void RemoveItemFromGrid(ResponseItemJson item)
     {
         _cachedItems.Remove(item);
         itensDataGrid.DataSource = new BindingList<ResponseItemJson>(_cachedItems);
         totalLabel.Text = $"Total de itens: {_cachedItems.Count}";
     }
+
 }

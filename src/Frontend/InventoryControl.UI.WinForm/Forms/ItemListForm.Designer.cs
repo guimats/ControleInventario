@@ -46,6 +46,7 @@
             itensGroupBox = new GroupBox();
             itensDataGrid = new DataGridView();
             itemMenuStrip = new ContextMenuStrip(components);
+            editItem = new ToolStripMenuItem();
             deleteItem = new ToolStripMenuItem();
             filterGroupBox.SuspendLayout();
             statusGroupBox.SuspendLayout();
@@ -230,14 +231,22 @@
             // itemMenuStrip
             // 
             itemMenuStrip.ImageScalingSize = new Size(20, 20);
-            itemMenuStrip.Items.AddRange(new ToolStripItem[] { deleteItem });
+            itemMenuStrip.Items.AddRange(new ToolStripItem[] { editItem, deleteItem });
             itemMenuStrip.Name = "itemMenuStrip";
             itemMenuStrip.RenderMode = ToolStripRenderMode.Professional;
-            itemMenuStrip.Size = new Size(185, 52);
+            itemMenuStrip.Size = new Size(185, 78);
+            // 
+            // editItem
+            // 
+            editItem.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            editItem.Name = "editItem";
+            editItem.Size = new Size(184, 26);
+            editItem.Text = "Editar";
+            editItem.Click += editItem_Click;
             // 
             // deleteItem
             // 
-            deleteItem.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deleteItem.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             deleteItem.Image = Properties.Resources.lixo_icon;
             deleteItem.Name = "deleteItem";
             deleteItem.Size = new Size(184, 26);
@@ -255,6 +264,7 @@
             Name = "ItemListForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Listar Itens";
+            FormClosed += ItemListForm_FormClosed;
             filterGroupBox.ResumeLayout(false);
             filterGroupBox.PerformLayout();
             statusGroupBox.ResumeLayout(false);
@@ -285,5 +295,6 @@
         private Button clenFilterBtn;
         private ContextMenuStrip itemMenuStrip;
         private ToolStripMenuItem deleteItem;
+        private ToolStripMenuItem editItem;
     }
 }

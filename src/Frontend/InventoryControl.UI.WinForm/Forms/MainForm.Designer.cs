@@ -36,17 +36,22 @@
             cadastrarToolStripMenuItem = new ToolStripMenuItem();
             visualizarToolStripMenuItem = new ToolStripMenuItem();
             solicitaçãoToolStripMenuItem = new ToolStripMenuItem();
+            inventoryControlImage = new PictureBox();
+            logoImage = new PictureBox();
             mainFormMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)inventoryControlImage).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)logoImage).BeginInit();
             SuspendLayout();
             // 
             // mainFormMenu
             // 
             mainFormMenu.BackColor = SystemColors.MenuBar;
+            mainFormMenu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             mainFormMenu.ImageScalingSize = new Size(20, 20);
             mainFormMenu.Items.AddRange(new ToolStripItem[] { usuáriosMenuItem, itensToolStripMenuItem, solicitaçãoToolStripMenuItem });
             mainFormMenu.Location = new Point(0, 0);
             mainFormMenu.Name = "mainFormMenu";
-            mainFormMenu.Size = new Size(750, 28);
+            mainFormMenu.Size = new Size(750, 25);
             mainFormMenu.TabIndex = 0;
             mainFormMenu.Text = "menuStrip1";
             // 
@@ -55,20 +60,20 @@
             usuáriosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarUsuarioMenuItem, visualizarEditarMenuItem });
             usuáriosMenuItem.Margin = new Padding(10, 0, 5, 0);
             usuáriosMenuItem.Name = "usuáriosMenuItem";
-            usuáriosMenuItem.Size = new Size(79, 24);
+            usuáriosMenuItem.Size = new Size(71, 21);
             usuáriosMenuItem.Text = "&Usuários";
             // 
             // cadastrarUsuarioMenuItem
             // 
             cadastrarUsuarioMenuItem.Name = "cadastrarUsuarioMenuItem";
-            cadastrarUsuarioMenuItem.Size = new Size(200, 26);
+            cadastrarUsuarioMenuItem.Size = new Size(170, 22);
             cadastrarUsuarioMenuItem.Text = "&Cadastrar";
             cadastrarUsuarioMenuItem.Click += cadastrarUsuarioMenuItem_Click;
             // 
             // visualizarEditarMenuItem
             // 
             visualizarEditarMenuItem.Name = "visualizarEditarMenuItem";
-            visualizarEditarMenuItem.Size = new Size(200, 26);
+            visualizarEditarMenuItem.Size = new Size(170, 22);
             visualizarEditarMenuItem.Text = "&Visualizar/Editar";
             // 
             // itensToolStripMenuItem
@@ -76,34 +81,56 @@
             itensToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem, visualizarToolStripMenuItem });
             itensToolStripMenuItem.Margin = new Padding(0, 0, 5, 0);
             itensToolStripMenuItem.Name = "itensToolStripMenuItem";
-            itensToolStripMenuItem.Size = new Size(54, 24);
+            itensToolStripMenuItem.Size = new Size(47, 21);
             itensToolStripMenuItem.Text = "&Itens";
             // 
             // cadastrarToolStripMenuItem
             // 
             cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
-            cadastrarToolStripMenuItem.Size = new Size(224, 26);
+            cadastrarToolStripMenuItem.Size = new Size(108, 22);
             cadastrarToolStripMenuItem.Text = "&Novo";
             cadastrarToolStripMenuItem.Click += cadastrarToolStripMenuItem_Click;
             // 
             // visualizarToolStripMenuItem
             // 
             visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            visualizarToolStripMenuItem.Size = new Size(224, 26);
+            visualizarToolStripMenuItem.Size = new Size(108, 22);
             visualizarToolStripMenuItem.Text = "&Listar";
             visualizarToolStripMenuItem.Click += visualizarToolStripMenuItem_Click;
             // 
             // solicitaçãoToolStripMenuItem
             // 
             solicitaçãoToolStripMenuItem.Name = "solicitaçãoToolStripMenuItem";
-            solicitaçãoToolStripMenuItem.Size = new Size(96, 24);
+            solicitaçãoToolStripMenuItem.Size = new Size(82, 21);
             solicitaçãoToolStripMenuItem.Text = "&Solicitação";
+            // 
+            // inventoryControlImage
+            // 
+            inventoryControlImage.Image = Properties.Resources.nome_inventário_nobg_opacity;
+            inventoryControlImage.Location = new Point(59, 221);
+            inventoryControlImage.Name = "inventoryControlImage";
+            inventoryControlImage.Size = new Size(616, 131);
+            inventoryControlImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            inventoryControlImage.TabIndex = 1;
+            inventoryControlImage.TabStop = false;
+            // 
+            // logoImage
+            // 
+            logoImage.Image = Properties.Resources.logo_inventario;
+            logoImage.Location = new Point(294, 103);
+            logoImage.Name = "logoImage";
+            logoImage.Size = new Size(123, 112);
+            logoImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            logoImage.TabIndex = 2;
+            logoImage.TabStop = false;
             // 
             // mainForm
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(750, 411);
+            Controls.Add(logoImage);
+            Controls.Add(inventoryControlImage);
             Controls.Add(mainFormMenu);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MainMenuStrip = mainFormMenu;
@@ -113,6 +140,8 @@
             Text = "Controle de inventário";
             mainFormMenu.ResumeLayout(false);
             mainFormMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)inventoryControlImage).EndInit();
+            ((System.ComponentModel.ISupportInitialize)logoImage).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -127,5 +156,7 @@
         private ToolStripMenuItem visualizarEditarMenuItem;
         private ToolStripMenuItem cadastrarToolStripMenuItem;
         private ToolStripMenuItem visualizarToolStripMenuItem;
+        private PictureBox inventoryControlImage;
+        private PictureBox logoImage;
     }
 }

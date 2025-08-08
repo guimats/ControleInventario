@@ -73,9 +73,29 @@ namespace InventoryControl.UI.WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_inventario {
+            get {
+                object obj = ResourceManager.GetObject("logo-inventario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_srcontabil {
             get {
                 object obj = ResourceManager.GetObject("logo-srcontabil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nome_inventário_nobg_opacity {
+            get {
+                object obj = ResourceManager.GetObject("nome-inventário-nobg-opacity", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

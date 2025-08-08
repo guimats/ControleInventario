@@ -43,25 +43,25 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nameLabel.Location = new Point(45, 87);
+            nameLabel.Location = new Point(49, 99);
             nameLabel.Margin = new Padding(4, 0, 4, 0);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(66, 28);
+            nameLabel.Size = new Size(53, 21);
             nameLabel.TabIndex = 0;
             nameLabel.Text = "Nome";
             // 
             // nameText
             // 
-            nameText.Location = new Point(117, 87);
+            nameText.Location = new Point(121, 99);
             nameText.Name = "nameText";
-            nameText.Size = new Size(219, 34);
+            nameText.Size = new Size(219, 29);
             nameText.TabIndex = 1;
             // 
             // emailText
             // 
-            emailText.Location = new Point(117, 132);
+            emailText.Location = new Point(121, 144);
             emailText.Name = "emailText";
-            emailText.Size = new Size(219, 34);
+            emailText.Size = new Size(219, 29);
             emailText.TabIndex = 3;
             // 
             // emailLabel
@@ -69,19 +69,19 @@
             emailLabel.AutoSize = true;
             emailLabel.BackColor = SystemColors.Control;
             emailLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            emailLabel.Location = new Point(45, 132);
+            emailLabel.Location = new Point(49, 144);
             emailLabel.Margin = new Padding(4, 0, 4, 0);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new Size(67, 28);
+            emailLabel.Size = new Size(54, 21);
             emailLabel.TabIndex = 2;
             emailLabel.Text = "E-mail";
             // 
             // passwordText
             // 
-            passwordText.Location = new Point(117, 175);
+            passwordText.Location = new Point(121, 187);
             passwordText.Name = "passwordText";
             passwordText.PasswordChar = '*';
-            passwordText.Size = new Size(219, 34);
+            passwordText.Size = new Size(219, 29);
             passwordText.TabIndex = 5;
             // 
             // passwordLabel
@@ -89,10 +89,10 @@
             passwordLabel.AutoSize = true;
             passwordLabel.BackColor = SystemColors.Control;
             passwordLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            passwordLabel.Location = new Point(45, 178);
+            passwordLabel.Location = new Point(49, 190);
             passwordLabel.Margin = new Padding(4, 0, 4, 0);
             passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new Size(65, 28);
+            passwordLabel.Size = new Size(53, 21);
             passwordLabel.TabIndex = 4;
             passwordLabel.Text = "Senha";
             // 
@@ -100,7 +100,7 @@
             // 
             registerBtn.BackColor = SystemColors.ControlLight;
             registerBtn.FlatStyle = FlatStyle.Popup;
-            registerBtn.Location = new Point(160, 226);
+            registerBtn.Location = new Point(164, 238);
             registerBtn.Name = "registerBtn";
             registerBtn.Size = new Size(113, 44);
             registerBtn.TabIndex = 6;
@@ -111,7 +111,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.user_icon;
-            pictureBox1.Location = new Point(180, 12);
+            pictureBox1.Location = new Point(176, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(73, 69);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -120,7 +120,7 @@
             // 
             // UserRegisterForm
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(422, 291);
             Controls.Add(pictureBox1);

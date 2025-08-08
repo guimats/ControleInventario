@@ -32,7 +32,6 @@ namespace InventoryControl.UI.WinForms.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             emailLabel = new Label();
             emailText = new TextBox();
             passwordText = new TextBox();
@@ -90,11 +89,11 @@ namespace InventoryControl.UI.WinForms.Forms
             // 
             // loginPictureBox
             // 
-            loginPictureBox.Image = (System.Drawing.Image)resources.GetObject("loginPictureBox.Image");
-            loginPictureBox.Location = new Point(177, 28);
+            loginPictureBox.Image = Properties.Resources.logo_inventario;
+            loginPictureBox.Location = new Point(176, 11);
             loginPictureBox.Margin = new Padding(3, 2, 3, 2);
             loginPictureBox.Name = "loginPictureBox";
-            loginPictureBox.Size = new Size(85, 64);
+            loginPictureBox.Size = new Size(85, 85);
             loginPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             loginPictureBox.TabIndex = 5;
             loginPictureBox.TabStop = false;

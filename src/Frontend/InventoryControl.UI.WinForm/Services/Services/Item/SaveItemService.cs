@@ -8,11 +8,11 @@ using System.Net.Http.Json;
 
 namespace InventoryControl.UI.WinForms.Services.Services.Item;
 
-public class RegisterItemService : IRegisterItemService
+public class SaveItemService : ISaveItemService
 {
     private readonly IHttpClientProvider _httpClientProvider;
 
-    public RegisterItemService(IHttpClientProvider httpClientProvider)
+    public SaveItemService(IHttpClientProvider httpClientProvider)
     {
         _httpClientProvider = httpClientProvider;
     }
@@ -27,5 +27,10 @@ public class RegisterItemService : IRegisterItemService
         var errors = await response.Content.ReadFromJsonAsync<ResponseErrorJson>();
 
         throw new ErrorOnValidationException(errors!.Errors!);
+    }
+
+    public async Task UpdateAsync(RequestItemJson request, long id)
+    {
+        await _httpClientProvider.Client.PutAsJsonAsync($"item/{id}", request);
     }
 }
