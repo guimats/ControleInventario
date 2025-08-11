@@ -11,7 +11,7 @@ namespace InventoryControl.Infrastructure.Helpers
             {
                 WriteIndented = false,
                 ReferenceHandler = ReferenceHandler.IgnoreCycles,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
             });
         }
     }

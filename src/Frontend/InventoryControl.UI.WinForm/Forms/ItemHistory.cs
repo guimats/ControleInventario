@@ -1,77 +1,94 @@
 ﻿using InventoryControl.Communication.Responses;
 using InventoryControl.UI.WinForms.Services.Interfaces.ItemHistory;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Serialization;
 
-namespace InventoryControl.UI.WinForms.Forms
+namespace InventoryControl.UI.WinForms.Forms;
+
+public partial class ItemHistory : Form
 {
-    public partial class ItemHistory : Form
+    private readonly IItemHistoryService _itemHistoryService;
+    private readonly long _itemId;
+    private IList<ResponseItemHistoryJson> _itemHistory;
+
+    public ItemHistory(IItemHistoryService itemHistoryService, long id)
     {
-        private readonly IItemHistoryService _itemHistoryService;
-        private readonly long _itemId;
+        InitializeComponent();
+        _itemHistoryService = itemHistoryService;
+        _itemId = id;
+        _itemHistory = [];
+    }
 
-        public ItemHistory(IItemHistoryService itemHistoryService, long id)
+    private async void ItemHistory_Load(object sender, EventArgs e)
+    {
+        historyDataGrid.DefaultCellStyle.Font = new Font("Segoe UI", 11);
+        historyDataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+
+        var response = await _itemHistoryService.GetItemHistoryAsync(_itemId);
+
+        if (response?.Histories is null)
+            return;
+
+        _itemHistory = response.Histories;
+        ShortHistory(_itemHistory);
+    }
+
+    private void ShortHistory(IList<ResponseItemHistoryJson> itemHistory)
+    {
+        historyDataGrid.Columns.Add(new DataGridViewTextBoxColumn
         {
-            InitializeComponent();
-            _itemHistoryService = itemHistoryService;
-            _itemId = id;
-        }
+            Name = "Id",
+            DataPropertyName = "idField",
+            HeaderText = "ID",
+            Width = 50
+        });
 
-        private async void ItemHistory_Load(object sender, EventArgs e)
+        historyDataGrid.Columns.Add(new DataGridViewTextBoxColumn
         {
-            historyDataGrid.DefaultCellStyle.Font = new Font("Segoe UI", 11);
-            historyDataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            DataPropertyName = "dateField",
+            HeaderText = "Data da modificação",
+            Width = 250
+        });
 
-            var response = await _itemHistoryService.GetItemHistoryAsync(_itemId);
-
-
-            if (response?.Histories is null)
-                return;
-
-            var itemHistory = response.Histories;
-            ShortHistory(itemHistory);
-        }
-
-        private void ShortHistory(IList<ResponseItemHistoryJson> itemHistory)
+        historyDataGrid.Columns.Add(new DataGridViewTextBoxColumn
         {
-            historyDataGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "dataField",
-                HeaderText = "Data da modificação",
-                Width = 250
-            });
+            DataPropertyName = "userField",
+            HeaderText = "Usúário",
+            Width = 150
+        });
 
-            historyDataGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "userField",
-                HeaderText = "Usúário",
-                Width = 150
-            });
+        historyDataGrid.Columns.Add(new DataGridViewTextBoxColumn
+        {
+            DataPropertyName = "typeField",
+            HeaderText = "Tipo",
+            Width = 150
+        });
 
-            historyDataGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "typeField",
-                HeaderText = "Tipo",
-                Width = 150
-            });
+        var shortFields = itemHistory.Select(item => new
+        {
+            idField = item.Id,
+            dateField = item.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
+            userField = item.UserName,
+            typeField = "Alteração" // IMPLEMENTAR
+        }).ToList();
 
-            var shortFields = itemHistory.Select(item => new
-            {
-                dataField = item.CreatedOn.ToString("dd/MM/yyyy HH:mm"),
-                userField = item.UserName,
-                typeField = "Alteração" // IMPLEMENTAR
-            }).ToList();
+        historyDataGrid.AutoGenerateColumns = false;
+        historyDataGrid.DataSource = shortFields;
+    }
 
-            historyDataGrid.AutoGenerateColumns = false;
-            historyDataGrid.DataSource = shortFields;
-        }
+    private void historyDataGrid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+    {
+        if (e.Button == MouseButtons.Left && e.RowIndex >= 0)
+        {
+            historyDataGrid.ClearSelection(); // limpando seleções anteriores
+            historyDataGrid.Rows[e.RowIndex].Selected = true; // selecionando
+            historyDataGrid.CurrentCell = historyDataGrid.Rows[e.RowIndex].Cells[0]; // prevenção de problemas
+
+            var historyId = historyDataGrid.Rows[e.RowIndex].Cells["Id"].Value;
+
+            var selectedHistory = _itemHistory.FirstOrDefault(h => h.Id == (long)historyId);
+
+            var longHistory = new LongHistoryForm(selectedHistory!);
+            longHistory.ShowDialog();
+        }       
     }
 }

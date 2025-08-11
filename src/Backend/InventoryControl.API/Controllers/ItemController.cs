@@ -13,12 +13,12 @@ namespace InventoryControl.API.Controllers
 
     [Route("[controller]")]
     [ApiController]
+    [AuthenticatedUser]
     public class ItemController : ControllerBase
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredItemJson), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
-        [AuthenticatedUser]
         public async Task<IActionResult> Register(
             [FromServices] IRegisterItemUseCase useCase,
             [FromBody] RequestItemJson request)
@@ -31,7 +31,6 @@ namespace InventoryControl.API.Controllers
         [HttpPut]
         [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [AuthenticatedUser]
         public async Task<IActionResult> UpdateItem(
             [FromRoute] long id,
             [FromServices] IUpdateItemUseCase useCase,
@@ -45,6 +44,7 @@ namespace InventoryControl.API.Controllers
         [HttpPost("filter")]
         [ProducesResponseType(typeof(ResponseItensJson), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        
         public async Task<IActionResult> Filter(
             [FromServices] IFilterItensUseCase useCase,
             [FromBody] RequestFilterItemJson request)

@@ -16,6 +16,7 @@ public static class ServiceProvider
     private static readonly IFilterItensService _filterItensService = new FilterItensService(_httpClientProvider);
     private static readonly IDeleteItemService _deleteItemService = new DeleteItemService(_httpClientProvider);
     private static readonly IItemHistoryService _itemHistoryService = new ItemHistoryService(_httpClientProvider);
+    private static readonly IGetUserProfileService _getUserProfileService = new GetUserProfileService(_httpClientProvider);
 
 
     public static IHttpClientProvider HttpClientProvider => _httpClientProvider;
@@ -25,5 +26,6 @@ public static class ServiceProvider
     public static IFilterItensService FilterItensService => _filterItensService;
     public static IDeleteItemService DeleteItemService => _deleteItemService;
     public static IItemHistoryService ItemHistoryService => _itemHistoryService;
+    public static IGetUserProfileService GetUserProfileService => _getUserProfileService;
 
 }

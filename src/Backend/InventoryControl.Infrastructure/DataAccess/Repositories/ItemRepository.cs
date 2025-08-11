@@ -20,7 +20,8 @@ namespace InventoryControl.Infrastructure.DataAccess.Repositories
             var query = _dbContext
                 .Itens
                 .AsNoTracking()
-                .Where(item => item.Active && item.UserId == user.Id);
+                .Where(item => item.Active);
+                //.Where(item => item.Active && item.UserId == user.Id); // ALTERAÇÃO MOMENTANEA
 
             if (filters.Departments.Any())
             {
@@ -54,7 +55,8 @@ namespace InventoryControl.Infrastructure.DataAccess.Repositories
         {
             return await _dbContext
                 .Itens
-                .FirstOrDefaultAsync(item => item.UserId == user.Id && item.Id == itemId);
+                .FirstOrDefaultAsync(item => item.Id == itemId); // ALTERAÇÃO MOMENTANEA
+                //.FirstOrDefaultAsync(item => item.UserId == user.Id && item.Id == itemId);
         }
 
         async Task<Item?> IItemReadOnlyRepository.GetById(User user, long itemId)
@@ -62,7 +64,8 @@ namespace InventoryControl.Infrastructure.DataAccess.Repositories
             return await _dbContext
                 .Itens
                 .AsNoTracking()
-                .FirstOrDefaultAsync(item => item.UserId == user.Id && item.Id == itemId);
+                .FirstOrDefaultAsync(item => item.Id == itemId); // ALTERAÇÃO MOMENTANEA
+                //.FirstOrDefaultAsync(item => item.UserId == user.Id && item.Id == itemId);
         }
 
         public void Update(Item item) => _dbContext.Itens.Update(item);

@@ -7,7 +7,6 @@ using InventoryControl.UI.WinForms.CommonUtilities;
 using InventoryControl.UI.WinForms.CommonUtilities.Validators;
 using InventoryControl.UI.WinForms.Services.Helpers;
 using InventoryControl.UI.WinForms.Services.Interfaces.Item;
-using InventoryControl.UI.WinForms.Services.Services.Item;
 
 namespace InventoryControl.UI.WinForms.Forms
 {

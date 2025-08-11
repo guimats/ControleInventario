@@ -2,6 +2,7 @@
 using InventoryControl.Domain.Repositories.ItemHistory;
 using InventoryControl.Domain.Services.ItemHistory;
 using InventoryControl.Infrastructure.Helpers;
+using System.Text.Json;
 
 namespace InventoryControl.Infrastructure.Services.UpdateHistory
 {

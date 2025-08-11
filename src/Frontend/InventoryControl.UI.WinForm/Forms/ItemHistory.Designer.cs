@@ -39,6 +39,7 @@
             historyDataGrid.Name = "historyDataGrid";
             historyDataGrid.Size = new Size(791, 426);
             historyDataGrid.TabIndex = 0;
+            historyDataGrid.CellMouseDown += historyDataGrid_CellMouseDown;
             // 
             // ItemHistory
             // 
@@ -47,6 +48,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(historyDataGrid);
             Name = "ItemHistory";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Histórico";
             Load += ItemHistory_Load;
             ((System.ComponentModel.ISupportInitialize)historyDataGrid).EndInit();

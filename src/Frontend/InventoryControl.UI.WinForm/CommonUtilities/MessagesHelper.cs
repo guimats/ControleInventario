@@ -6,4 +6,9 @@ public static class MessagesHelper
     {
         MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
+
+    public static DialogResult Confirm(string message, string title = "Confirmar")
+    {
+        return MessageBox.Show(message, title, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+    }
 }

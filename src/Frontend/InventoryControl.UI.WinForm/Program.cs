@@ -15,7 +15,7 @@ namespace InventoryControl.UI.WinForms.Forms
             var loginResult = loginForm.ShowDialog();
 
             if (loginResult == DialogResult.OK)
-                Application.Run(new mainForm());
+                Application.Run(new mainForm(ServiceProvider.GetUserProfileService));
         }
     }
 }

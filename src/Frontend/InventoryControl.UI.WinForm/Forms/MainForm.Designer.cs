@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             mainFormMenu = new MenuStrip();
+            welcomeMenuItem = new ToolStripMenuItem();
+            userProfileMenuItem = new ToolStripMenuItem();
+            changePasswordMenuItem = new ToolStripMenuItem();
             usuáriosMenuItem = new ToolStripMenuItem();
             cadastrarUsuarioMenuItem = new ToolStripMenuItem();
             visualizarEditarMenuItem = new ToolStripMenuItem();
             itensToolStripMenuItem = new ToolStripMenuItem();
-            cadastrarToolStripMenuItem = new ToolStripMenuItem();
-            visualizarToolStripMenuItem = new ToolStripMenuItem();
+            cadastrarItemMenuItem = new ToolStripMenuItem();
+            visualizarItemMenuItem = new ToolStripMenuItem();
             solicitaçãoToolStripMenuItem = new ToolStripMenuItem();
             inventoryControlImage = new PictureBox();
             logoImage = new PictureBox();
@@ -48,12 +51,32 @@
             mainFormMenu.BackColor = SystemColors.MenuBar;
             mainFormMenu.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             mainFormMenu.ImageScalingSize = new Size(20, 20);
-            mainFormMenu.Items.AddRange(new ToolStripItem[] { usuáriosMenuItem, itensToolStripMenuItem, solicitaçãoToolStripMenuItem });
+            mainFormMenu.Items.AddRange(new ToolStripItem[] { welcomeMenuItem, usuáriosMenuItem, itensToolStripMenuItem, solicitaçãoToolStripMenuItem });
             mainFormMenu.Location = new Point(0, 0);
             mainFormMenu.Name = "mainFormMenu";
             mainFormMenu.Size = new Size(750, 25);
             mainFormMenu.TabIndex = 0;
             mainFormMenu.Text = "menuStrip1";
+            // 
+            // welcomeMenuItem
+            // 
+            welcomeMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userProfileMenuItem, changePasswordMenuItem });
+            welcomeMenuItem.Name = "welcomeMenuItem";
+            welcomeMenuItem.Size = new Size(47, 21);
+            welcomeMenuItem.Text = "&Olá, ";
+            // 
+            // userProfileMenuItem
+            // 
+            userProfileMenuItem.Name = "userProfileMenuItem";
+            userProfileMenuItem.Size = new Size(180, 22);
+            userProfileMenuItem.Text = "&Meu perfil";
+            userProfileMenuItem.Click += userProfileMenuItem_Click;
+            // 
+            // changePasswordMenuItem
+            // 
+            changePasswordMenuItem.Name = "changePasswordMenuItem";
+            changePasswordMenuItem.Size = new Size(180, 22);
+            changePasswordMenuItem.Text = "&Alterar senha";
             // 
             // usuáriosMenuItem
             // 
@@ -78,25 +101,25 @@
             // 
             // itensToolStripMenuItem
             // 
-            itensToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarToolStripMenuItem, visualizarToolStripMenuItem });
+            itensToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarItemMenuItem, visualizarItemMenuItem });
             itensToolStripMenuItem.Margin = new Padding(0, 0, 5, 0);
             itensToolStripMenuItem.Name = "itensToolStripMenuItem";
             itensToolStripMenuItem.Size = new Size(47, 21);
             itensToolStripMenuItem.Text = "&Itens";
             // 
-            // cadastrarToolStripMenuItem
+            // cadastrarItemMenuItem
             // 
-            cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
-            cadastrarToolStripMenuItem.Size = new Size(108, 22);
-            cadastrarToolStripMenuItem.Text = "&Novo";
-            cadastrarToolStripMenuItem.Click += cadastrarToolStripMenuItem_Click;
+            cadastrarItemMenuItem.Name = "cadastrarItemMenuItem";
+            cadastrarItemMenuItem.Size = new Size(108, 22);
+            cadastrarItemMenuItem.Text = "&Novo";
+            cadastrarItemMenuItem.Click += cadastrarItemMenuItem_Click;
             // 
-            // visualizarToolStripMenuItem
+            // visualizarItemMenuItem
             // 
-            visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            visualizarToolStripMenuItem.Size = new Size(108, 22);
-            visualizarToolStripMenuItem.Text = "&Listar";
-            visualizarToolStripMenuItem.Click += visualizarToolStripMenuItem_Click;
+            visualizarItemMenuItem.Name = "visualizarItemMenuItem";
+            visualizarItemMenuItem.Size = new Size(108, 22);
+            visualizarItemMenuItem.Text = "&Listar";
+            visualizarItemMenuItem.Click += visualizarItemMenuItem_Click;
             // 
             // solicitaçãoToolStripMenuItem
             // 
@@ -138,6 +161,7 @@
             Name = "mainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de inventário";
+            Load += mainForm_Load;
             mainFormMenu.ResumeLayout(false);
             mainFormMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)inventoryControlImage).EndInit();
@@ -154,9 +178,12 @@
         private ToolStripMenuItem solicitaçãoToolStripMenuItem;
         private ToolStripMenuItem cadastrarUsuarioMenuItem;
         private ToolStripMenuItem visualizarEditarMenuItem;
-        private ToolStripMenuItem cadastrarToolStripMenuItem;
-        private ToolStripMenuItem visualizarToolStripMenuItem;
+        private ToolStripMenuItem cadastrarItemMenuItem;
+        private ToolStripMenuItem visualizarItemMenuItem;
         private PictureBox inventoryControlImage;
         private PictureBox logoImage;
+        private ToolStripMenuItem welcomeMenuItem;
+        private ToolStripMenuItem userProfileMenuItem;
+        private ToolStripMenuItem changePasswordMenuItem;
     }
 }

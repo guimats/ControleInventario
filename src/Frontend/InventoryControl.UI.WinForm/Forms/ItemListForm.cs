@@ -31,6 +31,8 @@ public partial class ItemListForm : Form
         defeitoRadioBtn.Tag = ItemStatus.Defeito;
 
         itensDataGrid.ContextMenuStrip = itemMenuStrip;
+
+        DataGridHelper.ConfigureFont(itensDataGrid, 9);
     }
 
     private void filterCodeText_KeyPress(object sender, KeyPressEventArgs e)
@@ -73,7 +75,15 @@ public partial class ItemListForm : Form
             var itens = response!.Itens;
 
             _cachedItems = itens.ToList();
+
             itensDataGrid.DataSource = itens.ToList();
+
+            // convertendo os nomes das tabelas para pt-br
+            foreach(DataGridViewTextBoxColumn column in itensDataGrid.Columns)
+            {
+                if (MapHelpers.FieldNameMap.TryGetValue(column.Name, out var headerText))
+                    column.HeaderText = headerText;
+            }
 
             totalLabel.Text = $"Total de itens: {itens.Count}";
         });
@@ -129,13 +139,6 @@ public partial class ItemListForm : Form
         _cachedItems.Clear();
     }
 
-    private void RemoveItemFromGrid(ResponseItemJson item)
-    {
-        _cachedItems.Remove(item);
-        itensDataGrid.DataSource = new BindingList<ResponseItemJson>(_cachedItems);
-        totalLabel.Text = $"Total de itens: {_cachedItems.Count}";
-    }
-
     private void historyItem_Click(object sender, EventArgs e)
     {
         var selectedRow = itensDataGrid.SelectedRows[0];
@@ -143,5 +146,12 @@ public partial class ItemListForm : Form
 
         var itemHistoryForm = new ItemHistory(ServiceProvider.ItemHistoryService, item.Id);
         itemHistoryForm.ShowDialog();
+    }
+
+    private void RemoveItemFromGrid(ResponseItemJson item)
+    {
+        _cachedItems.Remove(item);
+        itensDataGrid.DataSource = new BindingList<ResponseItemJson>(_cachedItems);
+        totalLabel.Text = $"Total de itens: {_cachedItems.Count}";
     }
 }

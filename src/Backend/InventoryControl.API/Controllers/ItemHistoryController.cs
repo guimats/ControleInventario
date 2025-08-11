@@ -1,4 +1,5 @@
-﻿using InventoryControl.Application.UseCases.ItemHistory.GetHistory;
+﻿using InventoryControl.API.Attributes;
+using InventoryControl.Application.UseCases.ItemHistory.GetHistory;
 using InventoryControl.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,7 @@ namespace InventoryControl.API.Controllers
 {
     [Route("item-history")]
     [ApiController]
+    [AuthenticatedUser]
     public class ItemHistoryController : ControllerBase
     {
         [HttpGet]
