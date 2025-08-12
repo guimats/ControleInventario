@@ -50,7 +50,7 @@ namespace WebApi.Test
         public Guid GetUserIdentifier() => _user.UserIdentifier;
 
         public string GetItemName() => _item.Name;
-        public string GetItemEmployee() => _item.Employee;
+        public string GetItemEmployee() => _item.Employee!;
         public string GetItemInternalCode() => _item.InternalCode;
         public ProductType? GetItemProductType() => _item.ProductType;
         public ItemStatus? GetItemStatus() => _item.ItemStatus;
