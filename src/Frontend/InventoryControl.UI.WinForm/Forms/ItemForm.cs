@@ -3,23 +3,24 @@ using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
 using InventoryControl.Exceptions;
 using InventoryControl.Exceptions.ExceptionsBase;
-using InventoryControl.UI.WinForms.CommonUtilities;
-using InventoryControl.UI.WinForms.CommonUtilities.Validators;
-using InventoryControl.UI.WinForms.Services.Helpers;
+using InventoryControl.UI.WinForms.Helpers;
 using InventoryControl.UI.WinForms.Services.Interfaces.Item;
+using InventoryControl.UI.WinForms.Validators;
 
 namespace InventoryControl.UI.WinForms.Forms
 {
     public partial class ItemForm : Form
     {
-        private readonly ISaveItemService _saveItemService;
+        private readonly IWriteItemService _writeItemService;
+        private readonly IUpdateItemService _updateItemService;
         private readonly ResponseItemJson? _itemToEdit;
         private readonly bool _isEditMode;
 
-        public ItemForm(ISaveItemService registerItemService)
+        public ItemForm(IWriteItemService registerItemService, IUpdateItemService updateItemService)
         {
             InitializeComponent();
-            _saveItemService = registerItemService;
+            _writeItemService = registerItemService;
+            _updateItemService = updateItemService;
 
             // cadastrando enums do radio btn
             estoqueRadioBtn.Tag = ItemStatus.Estoque;
@@ -33,7 +34,7 @@ namespace InventoryControl.UI.WinForms.Forms
             StandardValues.SetComboBoxValue(itemTypeBox);
         }
 
-        public ItemForm(ISaveItemService registerItemService, ResponseItemJson item) : this(registerItemService)
+        public ItemForm(IWriteItemService registerItemService, IUpdateItemService updateItemService, ResponseItemJson item) : this (registerItemService, updateItemService)
         {
             _itemToEdit = item;
             _isEditMode = true;
@@ -74,13 +75,13 @@ namespace InventoryControl.UI.WinForms.Forms
 
                 if (_isEditMode && _itemToEdit != null)
                 {
-                    await _saveItemService.UpdateAsync(request, _itemToEdit.Id);
+                    await _updateItemService.UpdateAsync(request, _itemToEdit.Id);
                     MessagesHelper.Success("Item atualizado com sucesso!");
                     Close();
                 }
                 else
                 {
-                    var result = await _saveItemService.RegisterAsync(request);
+                    var result = await _writeItemService.RegisterAsync(request);
                     MessagesHelper.Success("Item cadastro com sucesso");
                 }
 

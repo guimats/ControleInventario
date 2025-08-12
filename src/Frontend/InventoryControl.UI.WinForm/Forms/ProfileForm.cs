@@ -1,16 +1,19 @@
-﻿using InventoryControl.Communication.Responses;
-using InventoryControl.UI.WinForms.CommonUtilities;
+﻿using InventoryControl.Communication.Requests;
+using InventoryControl.UI.WinForms.Helpers;
 using InventoryControl.UI.WinForms.Models;
+using InventoryControl.UI.WinForms.Services.Interfaces.User;
 
 namespace InventoryControl.UI.WinForms.Forms
 {
     public partial class ProfileForm : Form
     {
-        private readonly UserProfileUiModel _profile;
+        private readonly IUpdateUserService _updateUserService;
+        private UserProfileUiModel _profile;
 
-        public ProfileForm(UserProfileUiModel profile)
+        public ProfileForm(IUpdateUserService updateUserService, UserProfileUiModel profile)
         {
             InitializeComponent();
+            _updateUserService = updateUserService;
             _profile = profile;
         }
 
@@ -19,29 +22,46 @@ namespace InventoryControl.UI.WinForms.Forms
             nameTextBox.Text = _profile.Name;
             emailTextBox.Text = _profile.Email;
 
-            SwitchTextsState();
+            SwitchBtnState();
         }
 
         private void leftBtn_Click(object sender, EventArgs e)
         {
             if (leftBtn.Text == "Alterar")
-                SwitchTextsState(editProfile: true);
+                SwitchBtnState(editProfile: true);
 
             else if (leftBtn.Text == "Cancelar")
-                SwitchTextsState();
+            {
+                nameTextBox.Text = _profile.Name;
+                emailTextBox.Text = _profile.Email;
+                SwitchBtnState();
+            }
         }
 
-        private void rightBtn_Click(object sender, EventArgs e)
+        private async void rightBtn_Click(object sender, EventArgs e)
         {
             if (rightBtn.Text == "OK")
-                Close();
-
-            else if (rightBtn.Text == "Salvar")
             {
-                var dialogResult = MessagesHelper.Confirm("Deseja realmente salvar?");
+                Close();
+                return;
+            }
 
-                if (dialogResult == DialogResult.OK)
-                    SwitchTextsState();
+            var dialogResult = MessagesHelper.Confirm("Deseja realmente salvar?");
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                await ExceptionHandler.TryExecuteAsync(async () =>
+                {
+                    var result = await _updateUserService.UpdateUser(BuildUpdateRequest());
+
+                    if (result is not true)
+                        return;
+
+                    _profile = _profile with { Name = nameTextBox.Text, Email = emailTextBox.Text };
+
+                    MessagesHelper.Success("Usuário atualizado com sucesso!");
+                    SwitchBtnState();
+                });
             }
         }
 
@@ -54,6 +74,7 @@ namespace InventoryControl.UI.WinForms.Forms
                 textBox.TabStop = true;
                 textBox.BackColor = SystemColors.Window;
                 textBox.GotFocus -= TextBox_RemoveFocus;
+                textBox.BorderStyle = BorderStyle.Fixed3D;
 
                 return;
             }
@@ -63,9 +84,10 @@ namespace InventoryControl.UI.WinForms.Forms
             textBox.TabStop = false;
             textBox.BackColor = SystemColors.Control;
             textBox.GotFocus += TextBox_RemoveFocus;
+            textBox.BorderStyle = BorderStyle.None;
         }
 
-        private void SwitchTextsState(bool editProfile = false)
+        private void SwitchBtnState(bool editProfile = false)
         {
             SetTextBox(nameTextBox, editProfile);
             SetTextBox(emailTextBox, editProfile);
@@ -84,6 +106,15 @@ namespace InventoryControl.UI.WinForms.Forms
         private void TextBox_RemoveFocus(object? sender, EventArgs e)
         {
             this.SelectNextControl((Control)sender!, true, true, true, true);
+        }
+
+        private RequestUpdateUserJson BuildUpdateRequest()
+        {
+            return new RequestUpdateUserJson
+            {
+                Name = nameTextBox.Text,
+                Email = emailTextBox.Text
+            };
         }
     }
 }

@@ -44,7 +44,7 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.Location = new Point(51, 136);
+            nameLabel.Location = new Point(57, 135);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(55, 20);
             nameLabel.TabIndex = 0;
@@ -52,25 +52,27 @@
             // 
             // nameTextBox
             // 
-            nameTextBox.Location = new Point(112, 136);
+            nameTextBox.BorderStyle = BorderStyle.None;
+            nameTextBox.Location = new Point(118, 135);
             nameTextBox.Name = "nameTextBox";
             nameTextBox.ReadOnly = true;
-            nameTextBox.Size = new Size(244, 27);
+            nameTextBox.Size = new Size(244, 20);
             nameTextBox.TabIndex = 1;
             // 
             // emailTextBox
             // 
-            emailTextBox.Location = new Point(111, 184);
+            emailTextBox.BorderStyle = BorderStyle.None;
+            emailTextBox.Location = new Point(119, 183);
             emailTextBox.Name = "emailTextBox";
             emailTextBox.ReadOnly = true;
-            emailTextBox.Size = new Size(244, 27);
+            emailTextBox.Size = new Size(244, 20);
             emailTextBox.TabIndex = 3;
             // 
             // emailLabel
             // 
             emailLabel.AutoSize = true;
             emailLabel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            emailLabel.Location = new Point(49, 187);
+            emailLabel.Location = new Point(57, 186);
             emailLabel.Name = "emailLabel";
             emailLabel.Size = new Size(56, 20);
             emailLabel.TabIndex = 2;
@@ -80,7 +82,7 @@
             // 
             roleLabel.AutoSize = true;
             roleLabel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            roleLabel.Location = new Point(26, 235);
+            roleLabel.Location = new Point(57, 236);
             roleLabel.Name = "roleLabel";
             roleLabel.Size = new Size(81, 20);
             roleLabel.TabIndex = 4;
@@ -89,7 +91,7 @@
             // profileImage
             // 
             profileImage.Image = Properties.Resources.user_icon;
-            profileImage.Location = new Point(171, 12);
+            profileImage.Location = new Point(168, 12);
             profileImage.Name = "profileImage";
             profileImage.Size = new Size(93, 93);
             profileImage.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -98,7 +100,7 @@
             // 
             // leftBtn
             // 
-            leftBtn.Location = new Point(96, 277);
+            leftBtn.Location = new Point(91, 292);
             leftBtn.Name = "leftBtn";
             leftBtn.Size = new Size(120, 42);
             leftBtn.TabIndex = 7;
@@ -108,7 +110,7 @@
             // 
             // rightBtn
             // 
-            rightBtn.Location = new Point(222, 277);
+            rightBtn.Location = new Point(217, 292);
             rightBtn.Name = "rightBtn";
             rightBtn.Size = new Size(120, 42);
             rightBtn.TabIndex = 8;
@@ -119,7 +121,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(113, 235);
+            label1.Location = new Point(144, 236);
             label1.Name = "label1";
             label1.Size = new Size(53, 20);
             label1.TabIndex = 9;
@@ -129,7 +131,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(423, 331);
+            ClientSize = new Size(425, 346);
             Controls.Add(label1);
             Controls.Add(rightBtn);
             Controls.Add(leftBtn);

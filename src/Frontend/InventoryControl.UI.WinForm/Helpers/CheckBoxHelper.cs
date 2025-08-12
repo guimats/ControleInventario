@@ -1,4 +1,4 @@
-﻿namespace InventoryControl.UI.WinForms.CommonUtilities;
+﻿namespace InventoryControl.UI.WinForms.Helpers;
 
 public static class CheckBoxHelper
 {

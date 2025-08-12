@@ -1,10 +1,9 @@
 ﻿using InventoryControl.Communication.Enums;
 using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
-using InventoryControl.UI.WinForms.CommonUtilities;
-using InventoryControl.UI.WinForms.Services.Helpers;
+using InventoryControl.UI.WinForms.Helpers;
 using InventoryControl.UI.WinForms.Services.Interfaces.Item;
-using InventoryControl.UI.WinForms.Services.Providers;
+using InventoryControl.UI.WinForms.Services.Interfaces.ItemHistory;
 using System.ComponentModel;
 
 namespace InventoryControl.UI.WinForms.Forms;
@@ -12,15 +11,23 @@ namespace InventoryControl.UI.WinForms.Forms;
 public partial class ItemListForm : Form
 {
     private readonly IFilterItensService _filterItensService;
-    private readonly IDeleteItemService _deleteItemService;
+    private readonly IWriteItemService _writeItemService;
+    private readonly IUpdateItemService _updateItemService;
+    private readonly IItemHistoryService _itemHistoryService;
     private List<ResponseItemJson> _cachedItems = [];
 
-    public ItemListForm(IFilterItensService filterItensService, IDeleteItemService deleteItemService)
+    public ItemListForm(
+        IFilterItensService filterItensService,
+        IWriteItemService writeItemService,
+        IUpdateItemService updateItemService,
+        IItemHistoryService itemHistoryService)
     {
         InitializeComponent();
         _filterItensService = filterItensService;
-        _deleteItemService = deleteItemService;
-
+        _writeItemService = writeItemService;
+        _updateItemService = updateItemService;
+        _itemHistoryService = itemHistoryService;
+        
         AcceptButton = searchBtn;
         CheckBoxHelper.CreateCheckBoxes<Department>(departmentGroupBox);
         CheckBoxHelper.CreateCheckBoxes<ProductType>(productTypeGroupBox);
@@ -110,19 +117,24 @@ public partial class ItemListForm : Form
         var selectedRow = itensDataGrid.SelectedRows[0];
         var item = (ResponseItemJson)selectedRow.DataBoundItem;
 
-        var confirm = MessageBox.Show(
-            $"Deseja realmente excluir o item '{item.Name} - {item.Brand}'",
-            "Corfirmar Exclusão",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Warning);
+        var confirm = MessagesHelper.Confirm($"Deseja realmente excluir o item '{item.Name} - {item.Brand}'", "Corfirmar Exclusão");
 
-        if (confirm == DialogResult.Yes)
+        if (confirm == DialogResult.No)
+            return;
+
+        await ExceptionHandler.TryExecuteAsync(async () =>
         {
-            await _deleteItemService.DeleteItemAsync(item.Id);
-            MessagesHelper.Success("Item excluído com sucesso!");
+            var result = await _writeItemService.DeleteItemAsync(item.Id);
 
-            RemoveItemFromGrid(item);
-        }
+            if (result)
+            {
+                MessagesHelper.Success("Item excluído com sucesso!");
+                RemoveItemFromGrid(item);
+                return;
+            }
+
+            MessagesHelper.Error("Erro ao tentar excluir o item.");
+        });
     }
 
     private void editItem_Click(object sender, EventArgs e)
@@ -130,7 +142,7 @@ public partial class ItemListForm : Form
         var selectedRow = itensDataGrid.SelectedRows[0];
         var item = (ResponseItemJson)selectedRow.DataBoundItem;
 
-        var itemForm = new ItemForm(ServiceProvider.RegisterItemService, item);
+        var itemForm = new ItemForm(_writeItemService, _updateItemService, item);
         itemForm.ShowDialog();
     }
 
@@ -144,7 +156,7 @@ public partial class ItemListForm : Form
         var selectedRow = itensDataGrid.SelectedRows[0];
         var item = (ResponseItemJson)selectedRow.DataBoundItem;
 
-        var itemHistoryForm = new ItemHistory(ServiceProvider.ItemHistoryService, item.Id);
+        var itemHistoryForm = new ItemHistory(_itemHistoryService, item.Id);
         itemHistoryForm.ShowDialog();
     }
 

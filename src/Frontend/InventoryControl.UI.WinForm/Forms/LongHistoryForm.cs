@@ -1,8 +1,6 @@
-﻿using InventoryControl.Communication.Enums;
-using InventoryControl.Communication.Responses;
-using InventoryControl.UI.WinForms.Services.Helpers;
+﻿using InventoryControl.Communication.Responses;
+using InventoryControl.UI.WinForms.Helpers;
 using System.Text.Json;
-using System.Windows.Forms;
 
 namespace InventoryControl.UI.WinForms.Forms;
 

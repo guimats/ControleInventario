@@ -1,7 +1,6 @@
 ﻿using InventoryControl.Communication.Enums;
-using System.Collections.ObjectModel;
 
-namespace InventoryControl.UI.WinForms.Services.Helpers;
+namespace InventoryControl.UI.WinForms.Helpers;
 
 public static class MapHelpers
 {

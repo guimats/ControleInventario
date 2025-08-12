@@ -4,5 +4,5 @@ public interface IHttpClientProvider
 {
     HttpClient Client { get; }
 
-    void SetToken(string token);
+    void SetToken(string token, string language = "pt-BR");
 }

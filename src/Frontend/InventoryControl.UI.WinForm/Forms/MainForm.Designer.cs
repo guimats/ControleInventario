@@ -1,6 +1,6 @@
 ﻿namespace InventoryControl.UI.WinForms.Forms
 {
-    partial class mainForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -77,6 +77,7 @@
             changePasswordMenuItem.Name = "changePasswordMenuItem";
             changePasswordMenuItem.Size = new Size(180, 22);
             changePasswordMenuItem.Text = "&Alterar senha";
+            changePasswordMenuItem.Click += changePasswordMenuItem_Click;
             // 
             // usuáriosMenuItem
             // 
@@ -147,7 +148,7 @@
             logoImage.TabIndex = 2;
             logoImage.TabStop = false;
             // 
-            // mainForm
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -158,7 +159,7 @@
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MainMenuStrip = mainFormMenu;
             Margin = new Padding(5);
-            Name = "mainForm";
+            Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de inventário";
             Load += mainForm_Load;

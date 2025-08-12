@@ -17,8 +17,12 @@ public class HttpClientProvider : IHttpClientProvider
 
     public HttpClient Client => _httpClient;
 
-    public void SetToken(string token)
+    public void SetToken(string token, string language = "pt-BR")
     {
+        _httpClient.DefaultRequestHeaders.AcceptLanguage.Clear();
+        _httpClient.DefaultRequestHeaders.AcceptLanguage.Add(
+            new StringWithQualityHeaderValue(language));
+
         _httpClient.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Bearer", token);
     }

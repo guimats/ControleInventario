@@ -1,6 +1,6 @@
 ﻿using InventoryControl.Exceptions.ExceptionsBase;
 
-namespace InventoryControl.UI.WinForms.Services.Helpers;
+namespace InventoryControl.UI.WinForms.Helpers;
 
 public static class ExceptionHandler
 {

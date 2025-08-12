@@ -4,7 +4,7 @@ using InventoryControl.Exceptions;
 using InventoryControl.Exceptions.ExceptionsBase;
 using System.Xml.Linq;
 
-namespace InventoryControl.UI.WinForms.CommonUtilities.Validators;
+namespace InventoryControl.UI.WinForms.Validators;
 
 public static class ValidateRequest
 {

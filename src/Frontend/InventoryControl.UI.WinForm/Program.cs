@@ -1,6 +1,7 @@
-using InventoryControl.UI.WinForms.Services.Providers;
+using InventoryControl.UI.WinForms.Forms;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace InventoryControl.UI.WinForms.Forms
+namespace InventoryControl.UI.WinForms
 {
     static class Program
     {
@@ -9,13 +10,22 @@ namespace InventoryControl.UI.WinForms.Forms
         {
             ApplicationConfiguration.Initialize();
 
-            //Application.Run(new ItemListForm());
+            var services = new ServiceCollection();
+            services.AddApplication();
+            var serviceProvider = services.BuildServiceProvider();
 
-            var loginForm = new LoginForm(ServiceProvider.AuthService);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            var mainForm = serviceProvider.GetRequiredService<MainForm>();
+            var loginForm = serviceProvider.GetRequiredService<LoginForm>();
+
             var loginResult = loginForm.ShowDialog();
 
             if (loginResult == DialogResult.OK)
-                Application.Run(new mainForm(ServiceProvider.GetUserProfileService));
+                Application.Run(mainForm);
+
+            Application.Run(mainForm);
         }
     }
 }
