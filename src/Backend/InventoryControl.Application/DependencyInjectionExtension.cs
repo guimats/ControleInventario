@@ -9,6 +9,7 @@ using InventoryControl.Application.UseCases.Login.DoLogin;
 using InventoryControl.Application.UseCases.User.ChangePassword;
 using InventoryControl.Application.UseCases.User.Profile;
 using InventoryControl.Application.UseCases.User.Register;
+using InventoryControl.Application.UseCases.User.Update;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -42,6 +43,7 @@ namespace InventoryControl.Application
             services.AddScoped<IGetItemByIdUseCase, GetItemByIdUseCase>();
             services.AddScoped<IDeleteItemUseCase, DeleteItemUseCase>();
             services.AddScoped<IGetItemHistoryUseCase, GetItemHistoryUseCase>();
+            services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
         }
     }
 }

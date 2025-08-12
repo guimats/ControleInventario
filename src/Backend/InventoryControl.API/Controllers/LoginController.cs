@@ -1,7 +1,6 @@
 ﻿using InventoryControl.Application.UseCases.Login.DoLogin;
 using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryControl.API.Controllers

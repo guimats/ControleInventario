@@ -2,6 +2,7 @@
 using InventoryControl.Application.UseCases.User.ChangePassword;
 using InventoryControl.Application.UseCases.User.Profile;
 using InventoryControl.Application.UseCases.User.Register;
+using InventoryControl.Application.UseCases.User.Update;
 using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,19 @@ namespace InventoryControl.API.Controllers
             var result = await useCase.Execute();
 
             return Ok(result);
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        [AuthenticatedUser]
+        public async Task<IActionResult> UpdateUser(
+            [FromServices] IUpdateUserUseCase useCase,
+            [FromBody] RequestUpdateUserJson request)
+        {
+            await useCase.Execute(request);
+
+            return NoContent();
         }
 
         [HttpPut("change-password")]
