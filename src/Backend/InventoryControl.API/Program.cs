@@ -1,4 +1,5 @@
 using InventoryControl.API.Filters;
+using InventoryControl.API.Middleware;
 using InventoryControl.API.Token;
 using InventoryControl.Application;
 using InventoryControl.Domain.Security.Tokens;
@@ -70,6 +71,8 @@ if (app.Environment.IsDevelopment())
     //app.UseSwagger();
     //app.UseSwaggerUI();
 }
+
+app.UseMiddleware<CultureMiddleware>();
 
 app.UseHttpsRedirection();
 
