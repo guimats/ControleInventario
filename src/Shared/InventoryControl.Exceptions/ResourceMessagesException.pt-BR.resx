@@ -118,57 +118,57 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DEPARTMENT_NOT_SUPORTED" xml:space="preserve">
-    <value>Department not suported.</value>
+    <value>Departamento não suportado.</value>
   </data>
   <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
-    <value>E-mail already registered.</value>
+    <value>E-mail já registrado.</value>
   </data>
   <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
-    <value>E-mail or password invalid.</value>
+    <value>E-mail ou senha inválidos.</value>
   </data>
   <data name="EMPTY_EMAIL" xml:space="preserve">
-    <value>E-mail can't be empty.</value>
+    <value>E-mail não pode ser vazio.</value>
   </data>
   <data name="EMPTY_INTERNAL_CODE" xml:space="preserve">
-    <value>Internal code can't be empty.</value>
+    <value>Código interno não pode ser vazio.</value>
   </data>
   <data name="EMPTY_NAME" xml:space="preserve">
-    <value>Name can't be empty.</value>
+    <value>Nome não pode ser vazio.</value>
   </data>
   <data name="EMPTY_PASSWORD" xml:space="preserve">
-    <value>Password can't be empty.</value>
+    <value>Senha não pode ser vazia.</value>
   </data>
   <data name="EMPTY_PRODUCT_TYPE" xml:space="preserve">
-    <value>Product type can't be empty.</value>
+    <value>Tipo de produto não pode ser vazio.</value>
   </data>
   <data name="EMPTY_ITEM_STATUS" xml:space="preserve">
-    <value>Item status can't be empty.</value>
+    <value>Item status não pode ser vazio.</value>
   </data>
   <data name="INVALID_EMAIL" xml:space="preserve">
-    <value>E-mail must be valid.</value>
+    <value>E-mail precisa ser válido.</value>
   </data>
   <data name="INVALID_PASSWORD" xml:space="preserve">
-    <value>Password must be longer than 6 characters.</value>
+    <value>Senha precisa ter no mínimo 6 caracteres.</value>
   </data>
   <data name="NO_TOKEN" xml:space="preserve">
-    <value>Authentication token is missing.</value>
+    <value>Token de autenticação está faltando.</value>
   </data>
   <data name="PRODUCT_TYPE_NOT_SUPORTED" xml:space="preserve">
-    <value>Product type not supported.</value>
+    <value>Tipo de produto não suportado.</value>
   </data>
   <data name="ITEM_STATUS_NOT_SUPORTED" xml:space="preserve">
-    <value>Status not supported.</value>
+    <value>Status não suportado.</value>
   </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
-    <value>Unknown error.</value>
+    <value>Erro desconhecido.</value>
   </data>
   <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
-    <value>User without permission to access this resource.</value>
+    <value>Usuário sem permissão para acessar esse recurso.</value>
   </data>
   <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
-    <value>Current password is incorrect.</value>
+    <value>Senha atual incorreta.</value>
   </data>
   <data name="ITEM_NOT_FOUND" xml:space="preserve">
-    <value>Item not found.</value>
+    <value>Item não encontrado.</value>
   </data>
 </root>

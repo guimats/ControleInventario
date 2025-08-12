@@ -187,7 +187,7 @@ namespace InventoryControl.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password different from the current password..
+        ///   Looks up a localized string similar to Current password is incorrect..
         /// </summary>
         public static string PASSWORD_DIFFERENT_CURRENT_PASSWORD {
             get {
