@@ -1,44 +1,21 @@
-﻿using InventoryControl.UI.WinForms.Models;
-using InventoryControl.UI.WinForms.Services.Interfaces.Item;
-using InventoryControl.UI.WinForms.Services.Interfaces.ItemHistory;
+﻿using InventoryControl.UI.WinForms.Factories;
+using InventoryControl.UI.WinForms.Models;
 using InventoryControl.UI.WinForms.Services.Interfaces.User;
-using InventoryControl.UI.WinForms.Validators;
 
 namespace InventoryControl.UI.WinForms.Forms
 {
     public partial class MainForm : Form
     {
-        private readonly IRegisterUserService _registerUserService;
-        private readonly IWriteItemService _writeItemService;
-        private readonly IFilterItensService _filterItensService;
-        private readonly IUpdateItemService _updateItemService;
+        private readonly IFormFactory _formFactory;
         private readonly IGetUserProfileService _getUserProfileService;
-        private readonly IUpdateUserService _updateUserService;
-        private readonly IChangePasswordService _changePasswordService;
-        private readonly IItemHistoryService _itemHistoryService;
-        private readonly PasswordValidator _passwordValidator;
 
         public MainForm(
-            IRegisterUserService registerUserService,
-            IWriteItemService writeItemService,
-            IFilterItensService filterItensService,
-            IUpdateItemService updateItemService,
-            IGetUserProfileService getUserProfileService, 
-            IUpdateUserService updateUserService,
-            IChangePasswordService changePasswordService,
-            IItemHistoryService itemHistoryService,
-            PasswordValidator passwordValidator)
+            IFormFactory formFactory,
+            IGetUserProfileService userProfileService)
         {
             InitializeComponent();
-            _registerUserService = registerUserService;
-            _writeItemService = writeItemService;
-            _filterItensService = filterItensService;
-            _updateItemService = updateItemService;
-            _getUserProfileService = getUserProfileService;
-            _updateUserService = updateUserService;
-            _changePasswordService = changePasswordService;
-            _itemHistoryService = itemHistoryService;
-            _passwordValidator = passwordValidator;
+            _formFactory = formFactory;
+            _getUserProfileService = userProfileService;
         }
 
         private async void mainForm_Load(object sender, EventArgs e)
@@ -51,19 +28,19 @@ namespace InventoryControl.UI.WinForms.Forms
 
         private void cadastrarUsuarioMenuItem_Click(object sender, EventArgs e)
         {
-            var userRegisterForm = new UserRegisterForm(_registerUserService);
+            var userRegisterForm = _formFactory.Create<UserRegisterForm>();
             userRegisterForm.ShowDialog();
         }
 
         private void cadastrarItemMenuItem_Click(object sender, EventArgs e)
         {
-            var itemRegisterForm = new ItemForm(_writeItemService, _updateItemService);
+            var itemRegisterForm = _formFactory.Create<ItemForm>();
             itemRegisterForm.ShowDialog();
         }
 
         private void visualizarItemMenuItem_Click(object sender, EventArgs e)
         {
-            var itemListForm = new ItemListForm(_filterItensService, _writeItemService, _updateItemService, _itemHistoryService);
+            var itemListForm = _formFactory.Create<ItemListForm>();
             itemListForm.ShowDialog();
         }
 
@@ -72,13 +49,13 @@ namespace InventoryControl.UI.WinForms.Forms
             var response = await _getUserProfileService.GetUserProfileAsync();
             var profileUiModel = new UserProfileUiModel(response!.Name, response.Email, "Admin");
 
-            var profileForm = new ProfileForm(_updateUserService, profileUiModel);
+            var profileForm = _formFactory.Create<ProfileForm>(form => form.ConfigureProfile(profileUiModel));
             profileForm.Show();
         }
 
         private void changePasswordMenuItem_Click(object sender, EventArgs e)
         {
-            var changePasswordForm = new ChangePasswordForm(_changePasswordService, _passwordValidator);
+            var changePasswordForm = _formFactory.Create<ChangePasswordForm>();
             changePasswordForm.ShowDialog();
         }
     }

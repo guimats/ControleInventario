@@ -1,6 +1,7 @@
 ﻿using InventoryControl.Communication.Enums;
 using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
+using InventoryControl.UI.WinForms.Factories;
 using InventoryControl.UI.WinForms.Helpers;
 using InventoryControl.UI.WinForms.Services.Interfaces.Item;
 using InventoryControl.UI.WinForms.Services.Interfaces.ItemHistory;
@@ -12,21 +13,21 @@ public partial class ItemListForm : Form
 {
     private readonly IFilterItensService _filterItensService;
     private readonly IWriteItemService _writeItemService;
-    private readonly IUpdateItemService _updateItemService;
     private readonly IItemHistoryService _itemHistoryService;
+    private readonly IFormFactory _formFactory;
     private List<ResponseItemJson> _cachedItems = [];
 
     public ItemListForm(
         IFilterItensService filterItensService,
         IWriteItemService writeItemService,
-        IUpdateItemService updateItemService,
-        IItemHistoryService itemHistoryService)
+        IItemHistoryService itemHistoryService,
+        IFormFactory formFactory)
     {
         InitializeComponent();
         _filterItensService = filterItensService;
         _writeItemService = writeItemService;
-        _updateItemService = updateItemService;
         _itemHistoryService = itemHistoryService;
+        _formFactory = formFactory;
         
         AcceptButton = searchBtn;
         CheckBoxHelper.CreateCheckBoxes<Department>(departmentGroupBox);
@@ -142,7 +143,7 @@ public partial class ItemListForm : Form
         var selectedRow = itensDataGrid.SelectedRows[0];
         var item = (ResponseItemJson)selectedRow.DataBoundItem;
 
-        var itemForm = new ItemForm(_writeItemService, _updateItemService, item);
+        var itemForm = _formFactory.Create<ItemForm>(form => form.ConfigureEditMode(item));
         itemForm.ShowDialog();
     }
 

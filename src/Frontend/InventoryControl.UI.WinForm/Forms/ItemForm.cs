@@ -13,15 +13,24 @@ namespace InventoryControl.UI.WinForms.Forms
     {
         private readonly IWriteItemService _writeItemService;
         private readonly IUpdateItemService _updateItemService;
-        private readonly ResponseItemJson? _itemToEdit;
-        private readonly bool _isEditMode;
+        private ResponseItemJson? _itemToEdit;
+        private bool _isEditMode;
 
         public ItemForm(IWriteItemService registerItemService, IUpdateItemService updateItemService)
         {
             InitializeComponent();
             _writeItemService = registerItemService;
             _updateItemService = updateItemService;
+        }
 
+        public void ConfigureEditMode(ResponseItemJson item)
+        {
+            _itemToEdit = item;
+            _isEditMode = true;
+        }
+
+        private void ItemForm_Load(object sender, EventArgs e)
+        {
             // cadastrando enums do radio btn
             estoqueRadioBtn.Tag = ItemStatus.Estoque;
             emUsoRadioBtn.Tag = ItemStatus.Em_Uso;
@@ -32,16 +41,7 @@ namespace InventoryControl.UI.WinForms.Forms
             itemTypeBox.DataSource = Enum.GetValues(typeof(ProductType));
             StandardValues.SetComboBoxValue(itemDepartmentBox);
             StandardValues.SetComboBoxValue(itemTypeBox);
-        }
 
-        public ItemForm(IWriteItemService registerItemService, IUpdateItemService updateItemService, ResponseItemJson item) : this (registerItemService, updateItemService)
-        {
-            _itemToEdit = item;
-            _isEditMode = true;
-        }
-
-        private void ItemForm_Load(object sender, EventArgs e)
-        {
             // carregando informações do item (se for editar)
             if (_isEditMode && _itemToEdit != null)
             {

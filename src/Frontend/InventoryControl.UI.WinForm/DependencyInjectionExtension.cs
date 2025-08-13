@@ -1,4 +1,5 @@
-﻿using InventoryControl.UI.WinForms.Forms;
+﻿using InventoryControl.UI.WinForms.Factories;
+using InventoryControl.UI.WinForms.Forms;
 using InventoryControl.UI.WinForms.Services.Interfaces.Item;
 using InventoryControl.UI.WinForms.Services.Interfaces.ItemHistory;
 using InventoryControl.UI.WinForms.Services.Interfaces.User;
@@ -19,6 +20,7 @@ public static class DependencyInjectionExtension
         AddServices(services);
         AddForms(services);
         AddPasswordRules(services);
+        AddFactory(services);
     }
 
     private static void AddServices(IServiceCollection services)
@@ -41,10 +43,8 @@ public static class DependencyInjectionExtension
         services.AddTransient<MainForm>();
         services.AddTransient<ChangePasswordForm>();
         services.AddTransient<ItemForm>();
-        services.AddTransient<ItemHistory>();
         services.AddTransient<ItemListForm>();
         services.AddTransient<LoginForm>();
-        services.AddTransient<LongHistoryForm>();
         services.AddTransient<MainForm>();
         services.AddTransient<ProfileForm>();
         services.AddTransient<UserRegisterForm>();
@@ -56,5 +56,10 @@ public static class DependencyInjectionExtension
         services.AddTransient<IPasswordRuleBase, DifferentFromCurrentRule>();
         services.AddTransient<IPasswordRuleBase, MatchConfirmationRule>();
         services.AddTransient<IPasswordRuleBase, MinLengthRule>();
+    }
+
+    private static void AddFactory(IServiceCollection services)
+    {
+        services.AddTransient<IFormFactory, FormFactory>();
     }
 }

@@ -8,20 +8,23 @@ namespace InventoryControl.UI.WinForms.Forms
     public partial class ProfileForm : Form
     {
         private readonly IUpdateUserService _updateUserService;
-        private UserProfileUiModel _profile;
+        private UserProfileUiModel? _profile;
 
-        public ProfileForm(IUpdateUserService updateUserService, UserProfileUiModel profile)
+        public ProfileForm(IUpdateUserService updateUserService)
         {
             InitializeComponent();
             _updateUserService = updateUserService;
+        }
+
+        public void ConfigureProfile(UserProfileUiModel profile)
+        {
             _profile = profile;
+            nameTextBox.Text = _profile.Name;
+            emailTextBox.Text = _profile.Email;
         }
 
         private void ProfileForm_Load(object sender, EventArgs e)
         {
-            nameTextBox.Text = _profile.Name;
-            emailTextBox.Text = _profile.Email;
-
             SwitchBtnState();
         }
 
