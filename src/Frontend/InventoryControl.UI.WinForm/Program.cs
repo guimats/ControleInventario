@@ -1,4 +1,5 @@
 using InventoryControl.UI.WinForms.Forms;
+using InventoryControl.UI.WinForms.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace InventoryControl.UI.WinForms
@@ -19,8 +20,9 @@ namespace InventoryControl.UI.WinForms
 
             var mainForm = serviceProvider.GetRequiredService<MainForm>();
             var loginForm = serviceProvider.GetRequiredService<LoginForm>();
-
             var loginResult = loginForm.ShowDialog();
+
+            NavigationHelper.Configure(serviceProvider);
 
             if (loginResult == DialogResult.OK)
                 Application.Run(mainForm);

@@ -3,8 +3,10 @@ using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
 using InventoryControl.Exceptions;
 using InventoryControl.Exceptions.ExceptionsBase;
+using InventoryControl.UI.WinForms.Exceptions;
 using InventoryControl.UI.WinForms.Helpers;
-using InventoryControl.UI.WinForms.Services.Interfaces.Item;
+using InventoryControl.UI.WinForms.Services.Item.Update;
+using InventoryControl.UI.WinForms.Services.Item.Write;
 using InventoryControl.UI.WinForms.Validators;
 
 namespace InventoryControl.UI.WinForms.Forms

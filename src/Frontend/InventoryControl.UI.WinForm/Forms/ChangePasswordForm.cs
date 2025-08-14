@@ -1,6 +1,7 @@
 ﻿using InventoryControl.Communication.Requests;
+using InventoryControl.UI.WinForms.Exceptions;
 using InventoryControl.UI.WinForms.Helpers;
-using InventoryControl.UI.WinForms.Services.Interfaces.User;
+using InventoryControl.UI.WinForms.Services.User.ChangePassword;
 using InventoryControl.UI.WinForms.Validators;
 
 namespace InventoryControl.UI.WinForms.Forms
@@ -39,13 +40,10 @@ namespace InventoryControl.UI.WinForms.Forms
 
             await ExceptionHandler.TryExecuteAsync(async () =>
             {
-                var result = await _changePasswordService.ChangePasswordAsync(request);
+                await _changePasswordService.ChangePasswordAsync(request);
 
-                if (result)
-                {
-                    MessagesHelper.Success("Senha alterada com sucesso!");
-                    Close();
-                }
+                MessagesHelper.Success("Senha alterada com sucesso!");
+                Close();
             });
         }
     }

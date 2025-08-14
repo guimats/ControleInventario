@@ -1,4 +1,4 @@
-﻿using InventoryControl.UI.WinForms.Services.Interfaces.User;
+﻿using InventoryControl.UI.WinForms.Services.User.Auth;
 
 namespace InventoryControl.UI.WinForms.Forms
 {

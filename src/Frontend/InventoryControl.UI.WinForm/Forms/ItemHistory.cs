@@ -1,5 +1,5 @@
 ﻿using InventoryControl.Communication.Responses;
-using InventoryControl.UI.WinForms.Services.Interfaces.ItemHistory;
+using InventoryControl.UI.WinForms.Services.ItemHistory;
 using System.Data;
 
 namespace InventoryControl.UI.WinForms.Forms;

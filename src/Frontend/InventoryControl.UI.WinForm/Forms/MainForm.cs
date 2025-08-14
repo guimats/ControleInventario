@@ -1,6 +1,6 @@
 ﻿using InventoryControl.UI.WinForms.Factories;
 using InventoryControl.UI.WinForms.Models;
-using InventoryControl.UI.WinForms.Services.Interfaces.User;
+using InventoryControl.UI.WinForms.Services.User.GetProfile;
 
 namespace InventoryControl.UI.WinForms.Forms
 {

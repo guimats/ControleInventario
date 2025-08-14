@@ -1,6 +1,5 @@
 
 using Microsoft.Extensions.DependencyInjection;
-using System.Windows.Forms;
 
 namespace InventoryControl.UI.WinForms.Factories
 {

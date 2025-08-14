@@ -1,10 +1,12 @@
 ﻿using InventoryControl.Communication.Enums;
 using InventoryControl.Communication.Requests;
 using InventoryControl.Communication.Responses;
+using InventoryControl.UI.WinForms.Exceptions;
 using InventoryControl.UI.WinForms.Factories;
 using InventoryControl.UI.WinForms.Helpers;
-using InventoryControl.UI.WinForms.Services.Interfaces.Item;
-using InventoryControl.UI.WinForms.Services.Interfaces.ItemHistory;
+using InventoryControl.UI.WinForms.Services.Item.Filter;
+using InventoryControl.UI.WinForms.Services.Item.Write;
+using InventoryControl.UI.WinForms.Services.ItemHistory;
 using System.ComponentModel;
 
 namespace InventoryControl.UI.WinForms.Forms;
@@ -125,16 +127,12 @@ public partial class ItemListForm : Form
 
         await ExceptionHandler.TryExecuteAsync(async () =>
         {
-            var result = await _writeItemService.DeleteItemAsync(item.Id);
+            await _writeItemService.DeleteItemAsync(item.Id);
 
-            if (result)
-            {
-                MessagesHelper.Success("Item excluído com sucesso!");
-                RemoveItemFromGrid(item);
-                return;
-            }
+            MessagesHelper.Success("Item excluído com sucesso!");
+            RemoveItemFromGrid(item);
+            return;
 
-            MessagesHelper.Error("Erro ao tentar excluir o item.");
         });
     }
 

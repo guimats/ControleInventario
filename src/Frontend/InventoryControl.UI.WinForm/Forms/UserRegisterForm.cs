@@ -1,5 +1,5 @@
-﻿using InventoryControl.UI.WinForms.Helpers;
-using InventoryControl.UI.WinForms.Services.Interfaces.User;
+﻿using InventoryControl.UI.WinForms.Exceptions;
+using InventoryControl.UI.WinForms.Services.User.Register;
 
 namespace InventoryControl.UI.WinForms.Forms;
 

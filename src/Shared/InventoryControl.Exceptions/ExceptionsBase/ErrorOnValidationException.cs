@@ -11,6 +11,7 @@ namespace InventoryControl.Exceptions.ExceptionsBase
         public ErrorOnValidationException(IList<string> errorMessages) : base(string.Empty)
         {
             _errorMessages = errorMessages;
+            Errors = [];
         }
 
         public override HttpStatusCode GetStatusCode() => HttpStatusCode.BadRequest;

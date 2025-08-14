@@ -1,7 +1,8 @@
 ﻿using InventoryControl.Communication.Requests;
+using InventoryControl.UI.WinForms.Exceptions;
 using InventoryControl.UI.WinForms.Helpers;
 using InventoryControl.UI.WinForms.Models;
-using InventoryControl.UI.WinForms.Services.Interfaces.User;
+using InventoryControl.UI.WinForms.Services.User.Update;
 
 namespace InventoryControl.UI.WinForms.Forms
 {
@@ -35,7 +36,7 @@ namespace InventoryControl.UI.WinForms.Forms
 
             else if (leftBtn.Text == "Cancelar")
             {
-                nameTextBox.Text = _profile.Name;
+                nameTextBox.Text = _profile!.Name;
                 emailTextBox.Text = _profile.Email;
                 SwitchBtnState();
             }
@@ -55,12 +56,9 @@ namespace InventoryControl.UI.WinForms.Forms
             {
                 await ExceptionHandler.TryExecuteAsync(async () =>
                 {
-                    var result = await _updateUserService.UpdateUser(BuildUpdateRequest());
+                    await _updateUserService.UpdateUser(BuildUpdateRequest());
 
-                    if (result is not true)
-                        return;
-
-                    _profile = _profile with { Name = nameTextBox.Text, Email = emailTextBox.Text };
+                    _profile = _profile! with { Name = nameTextBox.Text, Email = emailTextBox.Text };
 
                     MessagesHelper.Success("Usuário atualizado com sucesso!");
                     SwitchBtnState();
