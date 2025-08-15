@@ -23,6 +23,7 @@ public static class NavigationHelper
                 form.Close();
         }
 
+        // usando o beingInvoke para garantir que tudo seja fechado ou escondido antes de abrir o form de login
         mainForm!.BeginInvoke((Action)(() =>
         {
             var loginForm = _serviceProvider!.GetRequiredService<LoginForm>();
