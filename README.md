@@ -1,6 +1,6 @@
 # ControleInventario
 
-Projeto full stack de um aplicativo desktop de controle de inventário, utilizando o WinForms para consumir a API do back-end.
+Projeto full stack de um aplicativo desktop de controle de inventário, utilizando o WinForms para consumo de uma API.
 
 Nesse projeto busquei aplicar conceitos de arquitetura de projetos modernos, aplicando os principios do SOLID, arquitetura DDD e outros conceitos chaves.
 
