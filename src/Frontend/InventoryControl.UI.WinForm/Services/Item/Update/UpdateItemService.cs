@@ -1,6 +1,5 @@
 ﻿using InventoryControl.Communication.Requests;
 using InventoryControl.UI.WinForms.Providers;
-using System.Net.Http.Json;
 
 namespace InventoryControl.UI.WinForms.Services.Item.Update;
 

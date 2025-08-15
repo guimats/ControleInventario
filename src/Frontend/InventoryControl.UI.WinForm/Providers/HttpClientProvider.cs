@@ -1,6 +1,7 @@
 ﻿using InventoryControl.Communication.Responses;
 using InventoryControl.Exceptions.ExceptionsBase;
 using InventoryControl.UI.WinForms.Exceptions;
+using InventoryControl.UI.WinForms.Helpers;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -91,6 +92,7 @@ public class HttpClientProvider : IHttpClientProvider
             return;
 
         var error = await response.Content.ReadFromJsonAsync<ResponseErrorJson>();
+
 
         if (response.StatusCode == HttpStatusCode.Unauthorized)
         {

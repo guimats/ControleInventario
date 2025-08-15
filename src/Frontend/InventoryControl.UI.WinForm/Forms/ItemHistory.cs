@@ -1,4 +1,5 @@
 ﻿using InventoryControl.Communication.Responses;
+using InventoryControl.UI.WinForms.Exceptions;
 using InventoryControl.UI.WinForms.Services.ItemHistory;
 using System.Data;
 
@@ -7,13 +8,15 @@ namespace InventoryControl.UI.WinForms.Forms;
 public partial class ItemHistory : Form
 {
     private readonly IItemHistoryService _itemHistoryService;
+    private readonly ExceptionFilter _exceptionFilter;
     private readonly long _itemId;
     private IList<ResponseItemHistoryJson> _itemHistory;
 
-    public ItemHistory(IItemHistoryService itemHistoryService, long id)
+    public ItemHistory(IItemHistoryService itemHistoryService, ExceptionFilter exceptionFilter, long id)
     {
         InitializeComponent();
         _itemHistoryService = itemHistoryService;
+        _exceptionFilter = exceptionFilter;
         _itemId = id;
         _itemHistory = [];
     }
@@ -23,13 +26,16 @@ public partial class ItemHistory : Form
         historyDataGrid.DefaultCellStyle.Font = new Font("Segoe UI", 11);
         historyDataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
 
-        var response = await _itemHistoryService.GetItemHistoryAsync(_itemId);
+        await _exceptionFilter.ExecuteAsync(async () =>
+        {
+            var response = await _itemHistoryService.GetItemHistoryAsync(_itemId);
 
-        if (response?.Histories is null)
-            return;
+            if (response?.Histories is null)
+                return;
 
-        _itemHistory = response.Histories;
-        ShortHistory(_itemHistory);
+            _itemHistory = response.Histories;
+            ShortHistory(_itemHistory);
+        });
     }
 
     private void ShortHistory(IList<ResponseItemHistoryJson> itemHistory)

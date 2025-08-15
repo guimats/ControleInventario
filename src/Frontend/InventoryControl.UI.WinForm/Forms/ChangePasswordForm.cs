@@ -10,12 +10,17 @@ namespace InventoryControl.UI.WinForms.Forms
     {
         private readonly IChangePasswordService _changePasswordService;
         private readonly PasswordValidator _passwordValidator;
+        private readonly ExceptionFilter _exceptionFilter;
 
-        public ChangePasswordForm(IChangePasswordService changePasswordService, PasswordValidator passwordValidator)
+        public ChangePasswordForm(
+            IChangePasswordService changePasswordService, 
+            PasswordValidator passwordValidator, 
+            ExceptionFilter exceptionFilter)
         {
             InitializeComponent();
             _changePasswordService = changePasswordService;
             _passwordValidator = passwordValidator;
+            _exceptionFilter = exceptionFilter;
         }
 
         private async void confirmBtn_Click(object sender, EventArgs e)
@@ -38,7 +43,7 @@ namespace InventoryControl.UI.WinForms.Forms
                 NewPassword = newPasswordText.Text
             };
 
-            await ExceptionHandler.TryExecuteAsync(async () =>
+            await _exceptionFilter.ExecuteAsync(async () =>
             {
                 await _changePasswordService.ChangePasswordAsync(request);
 

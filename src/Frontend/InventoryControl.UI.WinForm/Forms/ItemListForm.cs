@@ -17,19 +17,22 @@ public partial class ItemListForm : Form
     private readonly IWriteItemService _writeItemService;
     private readonly IItemHistoryService _itemHistoryService;
     private readonly IFormFactory _formFactory;
+    private readonly ExceptionFilter _exceptionFilter;
     private List<ResponseItemJson> _cachedItems = [];
 
     public ItemListForm(
         IFilterItensService filterItensService,
         IWriteItemService writeItemService,
         IItemHistoryService itemHistoryService,
-        IFormFactory formFactory)
+        IFormFactory formFactory,
+        ExceptionFilter exceptionFilter)
     {
         InitializeComponent();
         _filterItensService = filterItensService;
         _writeItemService = writeItemService;
         _itemHistoryService = itemHistoryService;
         _formFactory = formFactory;
+        _exceptionFilter = exceptionFilter;
         
         AcceptButton = searchBtn;
         CheckBoxHelper.CreateCheckBoxes<Department>(departmentGroupBox);
@@ -52,7 +55,7 @@ public partial class ItemListForm : Form
 
     private async void searchBtn_Click(object sender, EventArgs e)
     {
-        await ExceptionHandler.TryExecuteAsync(async () =>
+        await _exceptionFilter.ExecuteAsync(async () =>
         {
             var selectedRadioBtn = statusGroupBox
                             .Controls
@@ -125,7 +128,7 @@ public partial class ItemListForm : Form
         if (confirm == DialogResult.No)
             return;
 
-        await ExceptionHandler.TryExecuteAsync(async () =>
+        await _exceptionFilter.ExecuteAsync(async () =>
         {
             await _writeItemService.DeleteItemAsync(item.Id);
 
@@ -155,7 +158,7 @@ public partial class ItemListForm : Form
         var selectedRow = itensDataGrid.SelectedRows[0];
         var item = (ResponseItemJson)selectedRow.DataBoundItem;
 
-        var itemHistoryForm = new ItemHistory(_itemHistoryService, item.Id);
+        var itemHistoryForm = new ItemHistory(_itemHistoryService, _exceptionFilter, item.Id);
         itemHistoryForm.ShowDialog();
     }
 

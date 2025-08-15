@@ -1,4 +1,6 @@
-﻿using InventoryControl.UI.WinForms.Factories;
+﻿using InventoryControl.UI.WinForms.Exceptions;
+using InventoryControl.UI.WinForms.Exceptions.Handlers;
+using InventoryControl.UI.WinForms.Factories;
 using InventoryControl.UI.WinForms.Forms;
 using InventoryControl.UI.WinForms.Providers;
 using InventoryControl.UI.WinForms.Services.Item.Filter;
@@ -24,6 +26,7 @@ public static class DependencyInjectionExtension
         AddForms(services);
         AddPasswordRules(services);
         AddFactory(services);
+        AddExceptions(services);
     }
 
     private static void AddServices(IServiceCollection services)
@@ -64,5 +67,13 @@ public static class DependencyInjectionExtension
     private static void AddFactory(IServiceCollection services)
     {
         services.AddTransient<IFormFactory, FormFactory>();
+    }
+
+    private static void AddExceptions(IServiceCollection services)
+    {
+        services.AddSingleton<IExceptionHandler, ExpiredTokenHandler>();
+        services.AddSingleton<IExceptionHandler, InventoryControlHandler>();
+        services.AddSingleton<IExceptionHandler, FrontendExceptionHandler>();
+        services.AddSingleton<ExceptionFilter>();
     }
 }

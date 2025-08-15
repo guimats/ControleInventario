@@ -4,6 +4,7 @@ using InventoryControl.Communication.Responses;
 using InventoryControl.Exceptions;
 using InventoryControl.Exceptions.ExceptionsBase;
 using InventoryControl.UI.WinForms.Exceptions;
+using InventoryControl.UI.WinForms.Exceptions.Handlers;
 using InventoryControl.UI.WinForms.Helpers;
 using InventoryControl.UI.WinForms.Services.Item.Update;
 using InventoryControl.UI.WinForms.Services.Item.Write;
@@ -15,14 +16,16 @@ namespace InventoryControl.UI.WinForms.Forms
     {
         private readonly IWriteItemService _writeItemService;
         private readonly IUpdateItemService _updateItemService;
+        private readonly ExceptionFilter _exceptionFilter;
         private ResponseItemJson? _itemToEdit;
         private bool _isEditMode;
 
-        public ItemForm(IWriteItemService registerItemService, IUpdateItemService updateItemService)
+        public ItemForm(IWriteItemService registerItemService, IUpdateItemService updateItemService, ExceptionFilter exceptionFilter)
         {
             InitializeComponent();
             _writeItemService = registerItemService;
             _updateItemService = updateItemService;
+            _exceptionFilter = exceptionFilter;
         }
 
         public void ConfigureEditMode(ResponseItemJson item)
@@ -69,7 +72,7 @@ namespace InventoryControl.UI.WinForms.Forms
 
         private async void saveBtn_Click(object sender, EventArgs e)
         {
-            await ExceptionHandler.TryExecuteAsync(async () =>
+            await _exceptionFilter.ExecuteAsync(async () =>
             {
                 var request = BuildRequestFromForm();
 

@@ -1,5 +1,6 @@
 ﻿using InventoryControl.Communication.Requests;
 using InventoryControl.UI.WinForms.Exceptions;
+using InventoryControl.UI.WinForms.Exceptions.Handlers;
 using InventoryControl.UI.WinForms.Helpers;
 using InventoryControl.UI.WinForms.Models;
 using InventoryControl.UI.WinForms.Services.User.Update;
@@ -9,12 +10,14 @@ namespace InventoryControl.UI.WinForms.Forms
     public partial class ProfileForm : Form
     {
         private readonly IUpdateUserService _updateUserService;
+        private readonly ExceptionFilter _exceptionFilter;
         private UserProfileUiModel? _profile;
 
-        public ProfileForm(IUpdateUserService updateUserService)
+        public ProfileForm(IUpdateUserService updateUserService, ExceptionFilter exceptionFilter)
         {
             InitializeComponent();
             _updateUserService = updateUserService;
+            _exceptionFilter = exceptionFilter;
         }
 
         public void ConfigureProfile(UserProfileUiModel profile)
@@ -54,7 +57,7 @@ namespace InventoryControl.UI.WinForms.Forms
 
             if (dialogResult == DialogResult.Yes)
             {
-                await ExceptionHandler.TryExecuteAsync(async () =>
+                await _exceptionFilter.ExecuteAsync(async () =>
                 {
                     await _updateUserService.UpdateUser(BuildUpdateRequest());
 
