@@ -18,14 +18,6 @@ namespace InventoryControl.UI.WinForms.Forms
             _getUserProfileService = userProfileService;
         }
 
-        private async void mainForm_Load(object sender, EventArgs e)
-        {
-            var result = await _getUserProfileService.GetUserProfileAsync();
-            var firstName = result!.Name.Split()[0];
-
-            welcomeMenuItem.Text += $"{firstName}!";
-        }
-
         private void cadastrarUsuarioMenuItem_Click(object sender, EventArgs e)
         {
             var userRegisterForm = _formFactory.Create<UserRegisterForm>();

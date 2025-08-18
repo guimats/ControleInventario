@@ -62,8 +62,8 @@
             // 
             welcomeMenuItem.DropDownItems.AddRange(new ToolStripItem[] { userProfileMenuItem, changePasswordMenuItem });
             welcomeMenuItem.Name = "welcomeMenuItem";
-            welcomeMenuItem.Size = new Size(47, 21);
-            welcomeMenuItem.Text = "&Olá, ";
+            welcomeMenuItem.Size = new Size(49, 21);
+            welcomeMenuItem.Text = "&Perfil";
             // 
             // userProfileMenuItem
             // 
@@ -162,7 +162,6 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de inventário";
-            Load += mainForm_Load;
             mainFormMenu.ResumeLayout(false);
             mainFormMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)inventoryControlImage).EndInit();
