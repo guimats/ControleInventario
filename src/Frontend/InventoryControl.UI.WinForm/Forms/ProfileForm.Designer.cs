@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            nameLabel = new Label();
             nameTextBox = new TextBox();
             emailTextBox = new TextBox();
-            emailLabel = new Label();
             roleLabel = new Label();
             profileImage = new PictureBox();
             leftBtn = new Button();
@@ -40,53 +38,38 @@
             ((System.ComponentModel.ISupportInitialize)profileImage).BeginInit();
             SuspendLayout();
             // 
-            // nameLabel
-            // 
-            nameLabel.AutoSize = true;
-            nameLabel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            nameLabel.Location = new Point(57, 135);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(55, 20);
-            nameLabel.TabIndex = 0;
-            nameLabel.Text = "Nome:";
-            // 
             // nameTextBox
             // 
             nameTextBox.BorderStyle = BorderStyle.None;
-            nameTextBox.Location = new Point(118, 135);
+            nameTextBox.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            nameTextBox.Location = new Point(63, 121);
             nameTextBox.Name = "nameTextBox";
             nameTextBox.ReadOnly = true;
-            nameTextBox.Size = new Size(244, 20);
+            nameTextBox.Size = new Size(306, 20);
             nameTextBox.TabIndex = 1;
+            nameTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // emailTextBox
             // 
             emailTextBox.BorderStyle = BorderStyle.None;
-            emailTextBox.Location = new Point(119, 183);
+            emailTextBox.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            emailTextBox.Location = new Point(63, 159);
             emailTextBox.Name = "emailTextBox";
             emailTextBox.ReadOnly = true;
-            emailTextBox.Size = new Size(244, 20);
+            emailTextBox.Size = new Size(306, 20);
             emailTextBox.TabIndex = 3;
-            // 
-            // emailLabel
-            // 
-            emailLabel.AutoSize = true;
-            emailLabel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            emailLabel.Location = new Point(57, 186);
-            emailLabel.Name = "emailLabel";
-            emailLabel.Size = new Size(56, 20);
-            emailLabel.TabIndex = 2;
-            emailLabel.Text = "E-mail:";
+            emailTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // roleLabel
             // 
             roleLabel.AutoSize = true;
             roleLabel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            roleLabel.Location = new Point(57, 236);
+            roleLabel.Location = new Point(141, 201);
             roleLabel.Name = "roleLabel";
             roleLabel.Size = new Size(81, 20);
             roleLabel.TabIndex = 4;
             roleLabel.Text = "Permissão:";
+            roleLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // profileImage
             // 
@@ -100,7 +83,7 @@
             // 
             // leftBtn
             // 
-            leftBtn.Location = new Point(91, 292);
+            leftBtn.Location = new Point(91, 266);
             leftBtn.Name = "leftBtn";
             leftBtn.Size = new Size(120, 42);
             leftBtn.TabIndex = 7;
@@ -110,7 +93,7 @@
             // 
             // rightBtn
             // 
-            rightBtn.Location = new Point(217, 292);
+            rightBtn.Location = new Point(217, 266);
             rightBtn.Name = "rightBtn";
             rightBtn.Size = new Size(120, 42);
             rightBtn.TabIndex = 8;
@@ -121,26 +104,25 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(144, 236);
+            label1.Location = new Point(219, 201);
             label1.Name = "label1";
             label1.Size = new Size(53, 20);
             label1.TabIndex = 9;
             label1.Text = "Admin";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // ProfileForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(425, 346);
+            ClientSize = new Size(425, 326);
             Controls.Add(label1);
             Controls.Add(rightBtn);
             Controls.Add(leftBtn);
             Controls.Add(profileImage);
             Controls.Add(roleLabel);
             Controls.Add(emailTextBox);
-            Controls.Add(emailLabel);
             Controls.Add(nameTextBox);
-            Controls.Add(nameLabel);
             Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Margin = new Padding(3, 4, 3, 4);
@@ -155,11 +137,8 @@
         }
 
         #endregion
-
-        private Label nameLabel;
         private TextBox nameTextBox;
         private TextBox emailTextBox;
-        private Label emailLabel;
         private Label roleLabel;
         private PictureBox profileImage;
         private Button leftBtn;
