@@ -171,4 +171,7 @@
   <data name="ITEM_NOT_FOUND" xml:space="preserve">
     <value>Item not found.</value>
   </data>
+  <data name="ROLE_NOT_SUPORTED" xml:space="preserve">
+    <value>User role not suported.</value>
+  </data>
 </root>

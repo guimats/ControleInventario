@@ -13,7 +13,9 @@ public static class MapHelpers
         { "department", "Departamento" },
         { "productType", "Tipo" },
         { "itemStatus", "Status" },
-        { "active", "Ativo" }
+        { "active", "Ativo" },
+        { "email",  "E-mail"},
+        { "role", "Permissão" }
     };
 
     public static readonly Dictionary<string, Type> EnumFieldsMap = new(StringComparer.OrdinalIgnoreCase)

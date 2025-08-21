@@ -36,6 +36,8 @@
             passwordLabel = new Label();
             registerBtn = new Button();
             pictureBox1 = new PictureBox();
+            roleLabel = new Label();
+            roleComboBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -100,7 +102,7 @@
             // 
             registerBtn.BackColor = SystemColors.ControlLight;
             registerBtn.FlatStyle = FlatStyle.Popup;
-            registerBtn.Location = new Point(164, 238);
+            registerBtn.Location = new Point(152, 293);
             registerBtn.Name = "registerBtn";
             registerBtn.Size = new Size(113, 44);
             registerBtn.TabIndex = 6;
@@ -118,11 +120,30 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
+            // roleLabel
+            // 
+            roleLabel.AutoSize = true;
+            roleLabel.Location = new Point(49, 233);
+            roleLabel.Name = "roleLabel";
+            roleLabel.Size = new Size(52, 21);
+            roleLabel.TabIndex = 8;
+            roleLabel.Text = "Cargo";
+            // 
+            // roleComboBox
+            // 
+            roleComboBox.FormattingEnabled = true;
+            roleComboBox.Location = new Point(121, 233);
+            roleComboBox.Name = "roleComboBox";
+            roleComboBox.Size = new Size(144, 29);
+            roleComboBox.TabIndex = 9;
+            // 
             // UserRegisterForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(422, 291);
+            ClientSize = new Size(422, 378);
+            Controls.Add(roleComboBox);
+            Controls.Add(roleLabel);
             Controls.Add(pictureBox1);
             Controls.Add(registerBtn);
             Controls.Add(passwordText);
@@ -137,6 +158,7 @@
             Name = "UserRegisterForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Usuário";
+            Load += UserRegisterForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -152,5 +174,7 @@
         private Label passwordLabel;
         private Button registerBtn;
         private PictureBox pictureBox1;
+        private Label roleLabel;
+        private ComboBox roleComboBox;
     }
 }

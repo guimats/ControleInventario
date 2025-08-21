@@ -205,6 +205,15 @@ namespace InventoryControl.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User role not suported..
+        /// </summary>
+        public static string ROLE_NOT_SUPORTED {
+            get {
+                return ResourceManager.GetString("ROLE_NOT_SUPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown error..
         /// </summary>
         public static string UNKNOWN_ERROR {

@@ -9,6 +9,7 @@ using InventoryControl.UI.WinForms.Services.Item.Write;
 using InventoryControl.UI.WinForms.Services.ItemHistory;
 using InventoryControl.UI.WinForms.Services.User.Auth;
 using InventoryControl.UI.WinForms.Services.User.ChangePassword;
+using InventoryControl.UI.WinForms.Services.User.Filter;
 using InventoryControl.UI.WinForms.Services.User.GetProfile;
 using InventoryControl.UI.WinForms.Services.User.Register;
 using InventoryControl.UI.WinForms.Services.User.Update;
@@ -41,6 +42,7 @@ public static class DependencyInjectionExtension
         services.AddTransient<IGetUserProfileService, GetUserProfileService>();
         services.AddTransient<IUpdateUserService, UpdateUserService>();
         services.AddTransient<IChangePasswordService, ChangePasswordService>();
+        services.AddTransient<IFilterUsersService, FilterUsersService>();
         services.AddTransient<PasswordValidator>();
     }
 
@@ -54,6 +56,7 @@ public static class DependencyInjectionExtension
         services.AddTransient<MainForm>();
         services.AddTransient<ProfileForm>();
         services.AddTransient<UserRegisterForm>();
+        services.AddTransient<UserListForm>();
     }
 
     private static void AddPasswordRules(IServiceCollection services)

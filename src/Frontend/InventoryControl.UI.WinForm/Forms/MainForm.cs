@@ -24,6 +24,12 @@ namespace InventoryControl.UI.WinForms.Forms
             userRegisterForm.ShowDialog();
         }
 
+        private void visualizarUserMenuItem_Click(object sender, EventArgs e)
+        {
+            var userListForm = _formFactory.Create<UserListForm>();
+            userListForm.Show();
+        }
+
         private void cadastrarItemMenuItem_Click(object sender, EventArgs e)
         {
             var itemRegisterForm = _formFactory.Create<ItemForm>();
@@ -33,7 +39,7 @@ namespace InventoryControl.UI.WinForms.Forms
         private void visualizarItemMenuItem_Click(object sender, EventArgs e)
         {
             var itemListForm = _formFactory.Create<ItemListForm>();
-            itemListForm.ShowDialog();
+            itemListForm.Show();
         }
 
         private async void userProfileMenuItem_Click(object sender, EventArgs e)

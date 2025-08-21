@@ -34,7 +34,7 @@
             changePasswordMenuItem = new ToolStripMenuItem();
             usuáriosMenuItem = new ToolStripMenuItem();
             cadastrarUsuarioMenuItem = new ToolStripMenuItem();
-            visualizarEditarMenuItem = new ToolStripMenuItem();
+            visualizarUserMenuItem = new ToolStripMenuItem();
             itensToolStripMenuItem = new ToolStripMenuItem();
             cadastrarItemMenuItem = new ToolStripMenuItem();
             visualizarItemMenuItem = new ToolStripMenuItem();
@@ -68,20 +68,20 @@
             // userProfileMenuItem
             // 
             userProfileMenuItem.Name = "userProfileMenuItem";
-            userProfileMenuItem.Size = new Size(180, 22);
+            userProfileMenuItem.Size = new Size(153, 22);
             userProfileMenuItem.Text = "&Meu perfil";
             userProfileMenuItem.Click += userProfileMenuItem_Click;
             // 
             // changePasswordMenuItem
             // 
             changePasswordMenuItem.Name = "changePasswordMenuItem";
-            changePasswordMenuItem.Size = new Size(180, 22);
+            changePasswordMenuItem.Size = new Size(153, 22);
             changePasswordMenuItem.Text = "&Alterar senha";
             changePasswordMenuItem.Click += changePasswordMenuItem_Click;
             // 
             // usuáriosMenuItem
             // 
-            usuáriosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarUsuarioMenuItem, visualizarEditarMenuItem });
+            usuáriosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastrarUsuarioMenuItem, visualizarUserMenuItem });
             usuáriosMenuItem.Margin = new Padding(10, 0, 5, 0);
             usuáriosMenuItem.Name = "usuáriosMenuItem";
             usuáriosMenuItem.Size = new Size(71, 21);
@@ -90,15 +90,16 @@
             // cadastrarUsuarioMenuItem
             // 
             cadastrarUsuarioMenuItem.Name = "cadastrarUsuarioMenuItem";
-            cadastrarUsuarioMenuItem.Size = new Size(170, 22);
+            cadastrarUsuarioMenuItem.Size = new Size(180, 22);
             cadastrarUsuarioMenuItem.Text = "&Cadastrar";
             cadastrarUsuarioMenuItem.Click += cadastrarUsuarioMenuItem_Click;
             // 
-            // visualizarEditarMenuItem
+            // visualizarUserMenuItem
             // 
-            visualizarEditarMenuItem.Name = "visualizarEditarMenuItem";
-            visualizarEditarMenuItem.Size = new Size(170, 22);
-            visualizarEditarMenuItem.Text = "&Visualizar/Editar";
+            visualizarUserMenuItem.Name = "visualizarUserMenuItem";
+            visualizarUserMenuItem.Size = new Size(180, 22);
+            visualizarUserMenuItem.Text = "&Visualizar/Editar";
+            visualizarUserMenuItem.Click += visualizarUserMenuItem_Click;
             // 
             // itensToolStripMenuItem
             // 
@@ -177,7 +178,7 @@
         private ToolStripMenuItem itensToolStripMenuItem;
         private ToolStripMenuItem solicitaçãoToolStripMenuItem;
         private ToolStripMenuItem cadastrarUsuarioMenuItem;
-        private ToolStripMenuItem visualizarEditarMenuItem;
+        private ToolStripMenuItem visualizarUserMenuItem;
         private ToolStripMenuItem cadastrarItemMenuItem;
         private ToolStripMenuItem visualizarItemMenuItem;
         private PictureBox inventoryControlImage;
