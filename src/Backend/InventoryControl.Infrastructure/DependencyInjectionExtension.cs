@@ -2,6 +2,7 @@
 using InventoryControl.Domain.Repositories;
 using InventoryControl.Domain.Repositories.Item;
 using InventoryControl.Domain.Repositories.ItemHistory;
+using InventoryControl.Domain.Repositories.Token;
 using InventoryControl.Domain.Repositories.User;
 using InventoryControl.Domain.Security.Cryptography;
 using InventoryControl.Domain.Security.Tokens;
@@ -12,6 +13,7 @@ using InventoryControl.Infrastructure.DataAccess.Repositories;
 using InventoryControl.Infrastructure.Extensions;
 using InventoryControl.Infrastructure.Security.Tokens.Access.Generator;
 using InventoryControl.Infrastructure.Security.Tokens.Access.Validator;
+using InventoryControl.Infrastructure.Security.Tokens.Refresh;
 using InventoryControl.Infrastructure.Services.Cryptography;
 using InventoryControl.Infrastructure.Services.LoggedUser;
 using InventoryControl.Infrastructure.Services.UpdateHistory;
@@ -64,6 +66,7 @@ namespace InventoryControl.Infrastructure
             services.AddScoped<IItemReadOnlyRepository, ItemRepository>();
             services.AddScoped<IItemHistoryWriteOnlyRepository, ItemHistoryRepository>();
             services.AddScoped<IItemHistoryReadOnlyRepository, ItemHistoryRepository>();
+            services.AddScoped<ITokenRepository, TokenRepository>();
         }
 
         private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)
@@ -86,15 +89,14 @@ namespace InventoryControl.Infrastructure
 
             services.AddScoped<IAccessTokenGenerator>(options => new JwtTokenGenerator(expirationTimeMinutes, signingKey!));
             services.AddScoped<IAccessTokenValidator>(options => new JwtTokenValidator(signingKey!));
+            services.AddScoped<IRefreshTokenGenerator, RefreshTokenGenerator>();
         }
 
         private static void AddLoggedUser(IServiceCollection services) => services.AddScoped<ILoggedUser, LoggedUser>();
 
         private static void AddPasswordsEncripter(IServiceCollection services, IConfiguration configuration)
         {
-            var addtionalKey = configuration.GetValue<string>("Settings:Password:AdditionalKey");
-
-            services.AddScoped<IPasswordEncripter>(options => new Sha512Encripter(addtionalKey!));
+            services.AddScoped<IPasswordEncripter>(options => new BCryptNet());
         }
 
         private static void AddUpdateHistory(IServiceCollection services) => services.AddScoped<IItemHistoryService, UpdateHistory>();

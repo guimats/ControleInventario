@@ -10,6 +10,7 @@ namespace InventoryControl.Infrastructure.DataAccess
         public DbSet<User> Users { get; set; }
         public DbSet<Item> Itens { get; set; }
         public DbSet<ItemHistory> ItemHistories { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

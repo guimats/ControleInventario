@@ -22,10 +22,12 @@ namespace InventoryControl.Infrastructure.DataAccess.Repositories
             return await _dbContext.Users.AnyAsync(user => user.UserIdentifier.Equals(userIdentifier) && user.Active);
         }
 
-        public async Task<User?> GetUserByEmailAndPassword(string email, string password)
+        public async Task<User?> GetByEmail(string email)
         {
-            return await _dbContext.Users.AsNoTracking()
-                .FirstOrDefaultAsync(user => user.Active && user.Email.Equals(email) && user.Password.Equals(password));
+            return await _dbContext
+                .Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(user => user.Active && user.Email.Equals(email));
         }
 
         public async Task<User> GetById(long id) => await _dbContext.Users.FirstAsync(user => user.Id == id);
@@ -47,5 +49,7 @@ namespace InventoryControl.Infrastructure.DataAccess.Repositories
 
             return await query.ToListAsync();
         }
+
+
     }
 }

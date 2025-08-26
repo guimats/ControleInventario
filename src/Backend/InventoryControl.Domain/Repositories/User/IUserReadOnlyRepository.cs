@@ -8,7 +8,7 @@ namespace InventoryControl.Domain.Repositories.User
 
         public Task<bool> ExistActiveUserWithIdentifier(Guid userIdentifier);
 
-        public Task<Entities.User?> GetUserByEmailAndPassword (string email, string password);
+        public Task<Entities.User?> GetByEmail(string email);
 
         public Task<IList<Entities.User>> Filter (FilterUsersDto filter);
     }
