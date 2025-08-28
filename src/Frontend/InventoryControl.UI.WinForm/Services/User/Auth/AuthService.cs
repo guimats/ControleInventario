@@ -26,7 +26,7 @@ public class AuthService : IAuthService
         {
             var user = await response.Content.ReadFromJsonAsync<ResponseRegisteredUserJson>();
 
-            _httpClientProvider.SetToken(user!.Tokens.AccessToken);
+            _httpClientProvider.SetTokens(user!.Tokens.AccessToken, user!.Tokens.RefreshToken);
 
             return new ResponseLoginResultJson
             {

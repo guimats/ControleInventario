@@ -4,7 +4,7 @@ public interface IHttpClientProvider
 {
     HttpClient Client { get; }
 
-    void SetToken(string token, string language = "pt-BR");
+    void SetTokens(string token, string refreshToken, string language = "pt-BR");
 
     public Task<T?> PostAsync<T>(string url, object request) where T : class;
 
