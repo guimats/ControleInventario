@@ -78,5 +78,10 @@ namespace InventoryControl.UI.WinForms.Forms
                 totalLabel.Text = $"Total de itens: {users.Count}";
             });
         }
+
+        private void cleanBtn_Click(object sender, EventArgs e)
+        {
+            CleanForms.CleanFields(Controls);
+        }
     }
 }

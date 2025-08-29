@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             filterGroupBox = new GroupBox();
             totalLabel = new Label();
             searchBtn = new Button();
@@ -42,6 +43,7 @@
             nameLabel = new Label();
             userGroupBox = new GroupBox();
             userDataGrid = new DataGridView();
+            userMenuStrip = new ContextMenuStrip(components);
             filterGroupBox.SuspendLayout();
             permissionGroupBox.SuspendLayout();
             userGroupBox.SuspendLayout();
@@ -138,6 +140,7 @@
             cleanBtn.TabIndex = 6;
             cleanBtn.Text = "Limpar";
             cleanBtn.UseVisualStyleBackColor = true;
+            cleanBtn.Click += cleanBtn_Click;
             // 
             // emailText
             // 
@@ -190,6 +193,11 @@
             userDataGrid.Size = new Size(773, 335);
             userDataGrid.TabIndex = 0;
             // 
+            // userMenuStrip
+            // 
+            userMenuStrip.Name = "userMenuStrip";
+            userMenuStrip.Size = new Size(181, 26);
+            // 
             // UserListForm
             // 
             AcceptButton = searchBtn;
@@ -230,5 +238,6 @@
         private Button searchBtn;
         private Button cleanBtn;
         private Label totalLabel;
+        private ContextMenuStrip userMenuStrip;
     }
 }

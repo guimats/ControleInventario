@@ -2,7 +2,7 @@
 using InventoryControl.Communication.Requests;
 using InventoryControl.Exceptions;
 
-namespace InventoryControl.Application.UseCases.User.ChangePassword
+namespace InventoryControl.Application.UseCases.CommonValidators.ChangePassword
 {
     public class ChangePasswordValidator : AbstractValidator<RequestChangePasswordJson>
     {
