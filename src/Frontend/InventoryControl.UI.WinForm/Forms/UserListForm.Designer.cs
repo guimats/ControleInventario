@@ -44,10 +44,13 @@
             userGroupBox = new GroupBox();
             userDataGrid = new DataGridView();
             userMenuStrip = new ContextMenuStrip(components);
+            editMenuItem = new ToolStripMenuItem();
+            changePasswordMenuItem = new ToolStripMenuItem();
             filterGroupBox.SuspendLayout();
             permissionGroupBox.SuspendLayout();
             userGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)userDataGrid).BeginInit();
+            userMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // filterGroupBox
@@ -192,11 +195,27 @@
             userDataGrid.Name = "userDataGrid";
             userDataGrid.Size = new Size(773, 335);
             userDataGrid.TabIndex = 0;
+            userDataGrid.CellMouseDown += userDataGrid_CellMouseDown;
             // 
             // userMenuStrip
             // 
+            userMenuStrip.Items.AddRange(new ToolStripItem[] { editMenuItem, changePasswordMenuItem });
             userMenuStrip.Name = "userMenuStrip";
-            userMenuStrip.Size = new Size(181, 26);
+            userMenuStrip.Size = new Size(142, 48);
+            // 
+            // editMenuItem
+            // 
+            editMenuItem.Name = "editMenuItem";
+            editMenuItem.Size = new Size(141, 22);
+            editMenuItem.Text = "Editar";
+            editMenuItem.Click += editMenuItem_Click;
+            // 
+            // changePasswordMenuItem
+            // 
+            changePasswordMenuItem.Name = "changePasswordMenuItem";
+            changePasswordMenuItem.Size = new Size(141, 22);
+            changePasswordMenuItem.Text = "Trocar senha";
+            changePasswordMenuItem.Click += changePasswordMenuItem_Click;
             // 
             // UserListForm
             // 
@@ -219,6 +238,7 @@
             permissionGroupBox.PerformLayout();
             userGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)userDataGrid).EndInit();
+            userMenuStrip.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -239,5 +259,7 @@
         private Button cleanBtn;
         private Label totalLabel;
         private ContextMenuStrip userMenuStrip;
+        private ToolStripMenuItem editMenuItem;
+        private ToolStripMenuItem changePasswordMenuItem;
     }
 }

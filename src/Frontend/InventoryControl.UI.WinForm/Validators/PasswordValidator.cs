@@ -1,4 +1,5 @@
-﻿using InventoryControl.UI.WinForms.Validators.PasswordRules;
+﻿using InventoryControl.UI.WinForms.DTOs;
+using InventoryControl.UI.WinForms.Validators.PasswordRules;
 
 namespace InventoryControl.UI.WinForms.Validators;
 
@@ -11,11 +12,24 @@ public class PasswordValidator
         _rules = rules;
     }
 
-    public (bool IsValid, string? ErrorMessage) Validate(string currentPassword, string newPassword, string confirmPassword)
+    public (bool IsValid, string? ErrorMessage) Validate(string newPassword, string confirmPassword, string currentPassword)
     {
-        foreach(var rule in _rules)
+        var context = new PasswordValidatorDto(newPassword, confirmPassword, currentPassword);
+        return ValidateContext(context);
+    }
+
+    // Cenário admin: não precisa da senha atual
+    public (bool IsValid, string? ErrorMessage) Validate(string newPassword, string confirmPassword)
+    {
+        var context = new PasswordValidatorDto(newPassword, confirmPassword, null, false);
+        return ValidateContext(context);
+    }
+
+    private (bool IsValid, string? ErrorMessage) ValidateContext(PasswordValidatorDto context)
+    {
+        foreach (var rule in _rules)
         {
-            if (!rule.IsValid(currentPassword, newPassword, confirmPassword))
+            if (!rule.IsValid(context))
                 return (false, rule.ErrorMessage);
         }
         return (true, null);

@@ -57,6 +57,7 @@ public static class DependencyInjectionExtension
         services.AddTransient<ProfileForm>();
         services.AddTransient<UserRegisterForm>();
         services.AddTransient<UserListForm>();
+        services.AddTransient<AdminChangePasswordForm>();
     }
 
     private static void AddPasswordRules(IServiceCollection services)

@@ -29,7 +29,7 @@ namespace InventoryControl.UI.WinForms.Forms
             var newPassword = newPasswordText.Text;
             var confirmNewPassword = validationPasswordText.Text;
 
-            (var isValid, var errorMessage) = _passwordValidator.Validate(currentPassword, newPassword, confirmNewPassword);
+            (var isValid, var errorMessage) = _passwordValidator.Validate(newPassword, confirmNewPassword, currentPassword);
 
             if (!isValid)
             {

@@ -1,4 +1,5 @@
 ﻿using InventoryControl.Application.Services.AutoMapper;
+using InventoryControl.Application.UseCases.Admin.ChangeUserPassword;
 using InventoryControl.Application.UseCases.Item.Delete;
 using InventoryControl.Application.UseCases.Item.Filter;
 using InventoryControl.Application.UseCases.Item.GetById;
@@ -35,18 +36,26 @@ namespace InventoryControl.Application
 
         private static void AddUseCases(IServiceCollection services)
         {
+            // USER
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
             services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
-            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
+            services.AddScoped<IFilterUsersUseCase, FilterUsersUseCase>();
+            services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
+            services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
+
+            // ADMIN
+            services.AddScoped<IChangeUserPasswordUseCase, ChangeUserPasswordUseCase>();
+
+            // ITEM
             services.AddScoped<IRegisterItemUseCase, RegisterItemUseCase>();
             services.AddScoped<IUpdateItemUseCase, UpdateItemUseCase>();
-            services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
             services.AddScoped<IFilterItensUseCase, FilterItensUseCase>();
             services.AddScoped<IGetItemByIdUseCase, GetItemByIdUseCase>();
             services.AddScoped<IDeleteItemUseCase, DeleteItemUseCase>();
             services.AddScoped<IGetItemHistoryUseCase, GetItemHistoryUseCase>();
-            services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
-            services.AddScoped<IFilterUsersUseCase, FilterUsersUseCase>();
+
+            // GENERAL
+            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
             services.AddScoped<IUseRefreshTokenUseCase, UseRefreshTokenUseCase>();
         }
     }

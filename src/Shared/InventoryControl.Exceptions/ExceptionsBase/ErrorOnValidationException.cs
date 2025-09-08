@@ -6,12 +6,12 @@ namespace InventoryControl.Exceptions.ExceptionsBase
     {
         private readonly IList<string> _errorMessages;
 
-        public object?[] Errors { get; set; }
+        public string[] Errors { get; set; }
 
         public ErrorOnValidationException(IList<string> errorMessages) : base(string.Empty)
         {
             _errorMessages = errorMessages;
-            Errors = [];
+            Errors = errorMessages.ToArray(); ;
         }
 
         public override HttpStatusCode GetStatusCode() => HttpStatusCode.BadRequest;

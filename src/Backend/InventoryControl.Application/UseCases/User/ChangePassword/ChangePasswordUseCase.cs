@@ -4,6 +4,8 @@ using InventoryControl.Domain.Repositories;
 using InventoryControl.Domain.Repositories.User;
 using InventoryControl.Domain.Security.Cryptography;
 using InventoryControl.Domain.Services.LoggedUser;
+using InventoryControl.Exceptions;
+using InventoryControl.Exceptions.ExceptionsBase;
 
 namespace InventoryControl.Application.UseCases.User.ChangePassword
 {
@@ -30,7 +32,7 @@ namespace InventoryControl.Application.UseCases.User.ChangePassword
         {
             var loggedUser = await _loggedUser.User();
 
-            ChangePasswordValidateHelper.Validate(request, loggedUser, _passwordEncripter);
+            Validate(request, loggedUser);
             
             var user = await _repository.GetById(loggedUser.Id);
 
@@ -39,6 +41,26 @@ namespace InventoryControl.Application.UseCases.User.ChangePassword
             _repository.Update(user);
 
             await _unitOfWork.Commit();
+        }
+
+        private void Validate(RequestChangePasswordJson request, Domain.Entities.User user)
+        {
+            var validator = new ChangePasswordValidator();
+
+            var result = validator.Validate(request);
+
+            if (!_passwordEncripter.IsValid(request.Password, user.Password))
+            {
+                result.Errors.Add(new FluentValidation.Results.ValidationFailure(
+                    string.Empty, ResourceMessagesException.PASSWORD_DIFFERENT_CURRENT_PASSWORD));
+            }
+
+            if (!result.IsValid)
+            {
+                var errorMessages = result.Errors.Select(e => e.ErrorMessage).Distinct().ToList();
+
+                throw new ErrorOnValidationException(errorMessages);
+            }
         }
     }
 }

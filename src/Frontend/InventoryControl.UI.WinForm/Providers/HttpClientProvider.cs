@@ -113,7 +113,6 @@ public class HttpClientProvider : IHttpClientProvider
 
         var error = JsonSerializer.Deserialize<ResponseErrorJson>(content);
 
-
         if (response.StatusCode == HttpStatusCode.Unauthorized)
             throw new UnauthorizedException();
 

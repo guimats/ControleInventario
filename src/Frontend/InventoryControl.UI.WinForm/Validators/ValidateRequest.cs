@@ -1,8 +1,5 @@
-﻿using InventoryControl.Communication.Enums;
-using InventoryControl.Communication.Requests;
-using InventoryControl.Exceptions;
+﻿using InventoryControl.Communication.Requests;
 using InventoryControl.Exceptions.ExceptionsBase;
-using System.Xml.Linq;
 
 namespace InventoryControl.UI.WinForms.Validators;
 

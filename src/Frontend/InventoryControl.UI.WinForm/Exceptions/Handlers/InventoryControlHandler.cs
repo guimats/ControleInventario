@@ -9,9 +9,16 @@ namespace InventoryControl.UI.WinForms.Exceptions.Handlers
         {
             if (ex is InventoryControlException exception)
             {
-                MessagesHelper.Alert(exception.GetMessages()[0]);
+                var messages = exception.GetMessages();
+
+                if (messages != null && messages.Count > 0)
+                    MessagesHelper.Alert(messages[0]);
+                else
+                    MessagesHelper.Alert("Ocorreu um erro inesperado no sistema.");
                 return true;
             }
+
+            MessagesHelper.Alert($"Erro inesperado: {ex.Message}");
             return false;
         }
     }

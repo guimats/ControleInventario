@@ -19,5 +19,12 @@ namespace InventoryControl.UI.WinForms.Factories
             configure?.Invoke(form);
             return form;
         }
+
+        public T Create<T>(Action<T>? configure = null, params object[] parameters) where T : Form
+        {
+            var form =  ActivatorUtilities.CreateInstance<T>(_serviceProvider, parameters);
+            configure?.Invoke(form);
+            return form;
+        }
     }
 }

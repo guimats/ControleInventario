@@ -1,8 +1,13 @@
-﻿namespace InventoryControl.Communication.Responses
+﻿using System.Text.Json.Serialization;
+
+namespace InventoryControl.Communication.Responses
 {
     public class ResponseErrorJson
     {
+        [JsonPropertyName("errors")]
         public IList<string>? Errors { get; set; }
+
+        [JsonPropertyName("tokenIsExpired")]
         public bool TokenIsExpired { get; set; }
 
         public ResponseErrorJson() {}
