@@ -3,6 +3,7 @@ using InventoryControl.UI.WinForms.Exceptions.Handlers;
 using InventoryControl.UI.WinForms.Factories;
 using InventoryControl.UI.WinForms.Forms;
 using InventoryControl.UI.WinForms.Providers;
+using InventoryControl.UI.WinForms.Services.Admin.ChangeUserPassword;
 using InventoryControl.UI.WinForms.Services.Item.Filter;
 using InventoryControl.UI.WinForms.Services.Item.Update;
 using InventoryControl.UI.WinForms.Services.Item.Write;
@@ -43,6 +44,7 @@ public static class DependencyInjectionExtension
         services.AddTransient<IUpdateUserService, UpdateUserService>();
         services.AddTransient<IChangePasswordService, ChangePasswordService>();
         services.AddTransient<IFilterUsersService, FilterUsersService>();
+        services.AddTransient<IAdminChangePasswordService, AdminChangePasswordService>();
         services.AddTransient<PasswordValidator>();
     }
 

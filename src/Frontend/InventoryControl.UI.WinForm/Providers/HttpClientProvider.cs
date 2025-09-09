@@ -141,15 +141,10 @@ public class HttpClientProvider : IHttpClientProvider
 
         if (response.StatusCode == HttpStatusCode.Unauthorized)
         {
-            var content = await response.Content.ReadAsStringAsync();
-            var error = JsonSerializer.Deserialize<ResponseErrorJson>(content);
-
             var tokenIsValid = await GenerateRefreshToken();
 
-            if (!error?.TokenIsExpired == true && tokenIsValid)
-            {
+            if (tokenIsValid)
                 response = await sendRequest(); // refaz a mesma request
-            }
         }
 
         return response;

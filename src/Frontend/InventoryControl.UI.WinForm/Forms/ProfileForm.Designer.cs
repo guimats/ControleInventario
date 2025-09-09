@@ -34,7 +34,7 @@
             profileImage = new PictureBox();
             leftBtn = new Button();
             rightBtn = new Button();
-            label1 = new Label();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)profileImage).BeginInit();
             SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             // 
             roleLabel.AutoSize = true;
             roleLabel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            roleLabel.Location = new Point(141, 201);
+            roleLabel.Location = new Point(112, 205);
             roleLabel.Name = "roleLabel";
             roleLabel.Size = new Size(81, 20);
             roleLabel.TabIndex = 4;
@@ -101,22 +101,20 @@
             rightBtn.UseVisualStyleBackColor = true;
             rightBtn.Click += rightBtn_Click;
             // 
-            // label1
+            // comboBox1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(219, 201);
-            label1.Name = "label1";
-            label1.Size = new Size(53, 20);
-            label1.TabIndex = 9;
-            label1.Text = "Admin";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(198, 202);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 28);
+            comboBox1.TabIndex = 10;
             // 
             // ProfileForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(425, 326);
-            Controls.Add(label1);
+            Controls.Add(comboBox1);
             Controls.Add(rightBtn);
             Controls.Add(leftBtn);
             Controls.Add(profileImage);
@@ -143,6 +141,6 @@
         private PictureBox profileImage;
         private Button leftBtn;
         private Button rightBtn;
-        private Label label1;
+        private ComboBox comboBox1;
     }
 }

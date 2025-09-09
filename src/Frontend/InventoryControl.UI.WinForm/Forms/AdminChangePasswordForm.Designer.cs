@@ -89,6 +89,7 @@
             cancelBtn.TabIndex = 5;
             cancelBtn.Text = "Cancelar";
             cancelBtn.UseVisualStyleBackColor = true;
+            cancelBtn.Click += cancelBtn_Click;
             // 
             // errorLabel
             // 
@@ -116,6 +117,7 @@
             Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
             Name = "AdminChangePasswordForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Alterar senha";
             ResumeLayout(false);
             PerformLayout();

@@ -1,6 +1,5 @@
 ﻿using InventoryControl.Communication.Requests;
 using InventoryControl.UI.WinForms.Exceptions;
-using InventoryControl.UI.WinForms.Exceptions.Handlers;
 using InventoryControl.UI.WinForms.Helpers;
 using InventoryControl.UI.WinForms.Models;
 using InventoryControl.UI.WinForms.Services.User.Update;
